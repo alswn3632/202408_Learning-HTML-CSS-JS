@@ -1,0 +1,569 @@
+@import url(../day06/reset.css);
+
+
+@font-face{
+    font-family: Noto_Sans_KR;
+    src: url(../font/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf);
+}
+
+body{
+    font-family: Noto_Sans_KR;
+}
+
+.wrap{
+    width: 100%;
+    min-width: 1200px;
+    /*1200px 어떻게 알아냄..?*/
+
+}
+
+.inner{
+    width: 1170px;
+    /*민속박물관 inner 간격 모두 1170px로 동일하고 
+    이 사이즈가 바뀌지 않도록 min-width를 1200px로 적용
+    1200px 보다 줄어들 경우 반응형 있음*/
+
+    margin: auto;
+    box-sizing: border-box;
+    /*모든 inner의 전체적인 사이즈를 맞춤*/
+
+    /* background-color: aqua; */
+}
+
+/* header */
+header{
+    width: 100%;
+    /*wrap 사이즈의 100%*/
+
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    /*top이 0px일때 처리*/
+
+    background-color: white;
+}
+
+header>.inner{
+    height: 115px;
+
+    position: relative; /*h1부모*/
+}
+
+header>.inner>h1{
+    position: absolute;
+    top: 15px;
+}
+
+header>.inner>.top-menu{
+    display: flex;
+    justify-content: end;
+}
+
+header>.inner>.top-menu>li{
+    padding: 10px 20px;
+    /*오른쪽 위 메뉴 글자들 각각 떨어뜨림
+    margin으로 넣지 않은 이유 롯데월드와 아이스링크 사이의 ㅣ << */
+
+    position: relative; /*.before::before의 부모*/
+}
+
+header>.inner>.nav>ul{
+    display: flex;
+    justify-content: center;
+    height: 79px;
+}
+
+header>.inner>.nav>ul>li{
+    margin: 0 40px;
+}
+
+header>.inner>.nav>ul>li>a{
+    font-size: large;
+    font-weight: 700;
+    line-height: 79px;
+}
+
+header>.inner ul>li>a:hover{
+    color: green;
+}
+
+header>.inner .bold{
+    color: rgb(40, 40, 40);
+    font-weight: 700;
+}
+
+header>.inner .bold:hover{
+    color: black;
+}
+
+/*앞으로 쓸 모든 .before에 공통적으로 사용할 수 있다.*/
+.before::before{
+    content: " ";
+    background-color: gray;
+    width: 1px;
+    height: 13px;
+    position: absolute;
+    top: 35%;
+    left: 0px;
+}
+
+/* main-image */
+section{
+    width: 100%;
+    height: 725px;
+    /*그림이미지 픽셀*/
+
+    background-image: url(img/202005111050316900.jpg);
+    background-size: cover;
+    background-position: center;
+
+    /*화살표 위치 조절 대상은 ul태그*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 정 중앙에 모이게됨 */
+}
+
+section>ul{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    /* 너비를90%로 잡아서 양옆에 간격이 생기게 함*/
+}
+
+/* 
+section>ul>li>img:hover{
+    이미지는 font weight를 조정할 수 없기 때문에
+    다른 사진을 추가하여 덮어씌운 것 같다. 
+}
+*/
+
+/* main 공통 */
+main>.con-box{
+    width: 100%;
+}
+
+main>.con-box>.inner{
+    padding: 120px 0;
+}
+
+/* 운영시간 */
+main>.con1>.inner{
+    height: 100px;
+    padding: 10px;
+}
+
+main>.con1>.inner>a{
+    text-align: center;
+    position: relative;
+}
+
+main>.con1>.inner>a>img{
+    position: absolute;
+    top: 25px;
+    left: 230px;
+}
+
+main>.con1>.inner>a>.time{
+    display: flex;
+    justify-content: center;
+    line-height: 80px;
+}
+
+main>.con1>.inner>a>.time>.ti{
+    display: flex;
+    justify-content: center;
+    padding-right: 30px; /* before 때문에 패딩으로 */
+    font-size: 20px;
+}
+
+main>.con1>.inner>a>.time>p{
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+main>.con1>.inner>a>.time>.ti>p{
+    margin-left: 20px;
+}
+
+main>.con1>.inner>a>.time>.last{
+    padding-right: 0;
+}
+
+main>.con1>.inner>a>.time>.ti{
+    position: relative;
+}
+
+main>.con1>.inner>a .bold{
+    font-weight: 700;
+}
+
+main>.con1>.inner>a>.time>.ti>.before::before{
+    content: " ";
+    background-color: gray;
+    width: 1px;
+    height: 20px;
+    position: absolute;
+    top: 35%;
+    left: 0px;
+}
+
+/* 상설전시 특별전시 */
+main>.con2{
+    background-image: url(img/mainCon1_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con2>.inner{
+    height: 890px;
+    text-align: center;
+    padding: 20px;
+}
+
+main>.con2>.inner>h1{
+    font-size: 36px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    color: white;
+}
+
+main>.con2>.inner>h3{
+    font-size: 16px;
+    margin-bottom: 50px;
+    color: white;
+}
+
+main>.con2>.inner>ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+main>.con2>.inner>ul>li .img{
+    width: 574px;
+    height: 420px;
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con2>.inner>ul>li .img1{
+    background-image: url(img/mainCon1_img1.jpg);
+}
+
+main>.con2>.inner>ul>li .img2{
+    background-image: url(img/mainCon1_img2.jpg);
+}
+
+main>.con2>.inner>ul>li p{
+    height: 82px;
+    line-height: 82px;
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+}
+
+main>.con2>.inner>ul>li{
+    border: 1px solid rgba(255, 255, 255, 0);    
+}
+
+main>.con2>.inner>ul>li:hover{
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+/* 다양한 프로그램 */
+main>.con3{
+    background-image: url(img/mainCon2_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con3>.inner{
+    text-align: center;
+}
+
+main>.con3>.inner>h1{
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+main>.con3>.inner>h3{
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+main>.con3>.inner>ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+main>.con3>.inner>ul .img{
+    width: 375px;
+    height: 246px;
+}
+
+main>.con3>.inner>ul .textArea{
+    width: 375px;
+    height: 77px;
+
+}
+
+main>.con3>.inner>ul .textArea>p{
+    line-height: 77px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: white;
+}
+
+main>.con3>.inner>ul>li:hover{
+    box-shadow: 10px 10px 20px rgba(189, 189, 189, 0.524);
+}
+
+main>.con3>.inner>ul>li:hover .textArea p{
+    background-color: rgb(0, 98, 0);
+    color: white;
+}
+
+/* 박물관 소식 */
+main>.con4{
+    width: 100%;
+}
+
+main>.con4>.inner>h1{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+main>.con4>.inner>h3{
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+main>.con4>.inner>.news{
+    display: flex;
+    justify-content: space-between;
+}
+
+main>.con4>.inner>.news>.left{
+    border: 1px solid gray;
+    width: 492px;
+    padding: 40px 40px 20px 40px;
+
+    position: relative;
+}
+
+main>.con4>.inner>.news>.left>.more{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 37px;
+    right: 40px;
+    
+    background-image: url(img/newsMoreBt_icon.png);
+    background-repeat: no-repeat;
+    
+}
+
+main>.con4>.inner>.news>.left>.more::before{
+    content: " 더보기 ";
+    position: absolute;
+    font-weight: 300;
+    top: 2px;
+    right: 25px;
+    width: 50px;
+}
+
+main>.con4>.inner>.news>.left>h3{
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+}
+
+main>.con4>.inner>.news>.left>.leftA{
+    display: block;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+main>.con4>.inner>.news>.left>.leftA>p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 63px;
+}
+
+main>.con4>.inner>.news>.left>.leftA>span{
+    color: gray;
+    font-weight: 300;
+}
+
+main>.con4>.inner>.news>.left>ul{
+    margin-top: 27px;
+}
+
+main>.con4>.inner>.news>.left>ul>li{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+main>.con4>.inner>.news>.left>ul>li>a{
+    width: 405px;
+
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+main>.con4>.inner>.news>.left>ul>li>a:hover{
+    text-decoration: underline;
+}
+
+main>.con4>.inner>.news>.left>ul>li>span{
+    color: gray;
+    font-weight: 300;
+}
+
+main>.con4>.inner>.news>.right{
+    width: 574px;
+}
+
+main>.con4>.inner>.news>.right>.top{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+main>.con4>.inner>.news>.right>.top>.r1{
+    background-image: url(img/mainCon3_util1_img1.png);
+    background-size: auto; /*자기자신 크기*/
+    background-repeat: no-repeat;
+    background-position: 50% 40%; /*가로 세로*/
+    width: 276px;
+    height: 188px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    padding: 128px 40px 40px 40px;
+
+}
+
+main>.con4>.inner>.news>.right>.top>.r2{
+    background-image: url(img/mainCon3_util1_img2.png);
+    background-size: auto; 
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    width: 276px;
+    height: 188px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    padding: 128px 40px 40px 40px;
+
+}
+
+main>.con4>.inner>.news>.right>.bt{
+    background-image: url(img/mainCon3_banner.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 574px;
+    height: 192px;
+
+    padding: 40px;
+    box-sizing: border-box;
+
+    margin-top: 20px;
+}
+
+main>.con4>.inner>.news>.right>.bt>p{
+    font-size: 30px;
+    font-weight: 300;
+    color: white;
+
+}
+
+main>.con4>.inner>.news>.right>.bt>.more{
+    margin-top: 20px;
+
+}
+main>.con4>.inner>.news>.right>.bt>.more>a{
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+
+}
+
+main>.con4>.inner>.news>.right>.bt>.more>a::after{
+    content: url(img/mainCon3_banner_icon.png);
+    margin-left: 10px;
+}
+
+/* footer */
+footer{
+    border-top: 1px solid gray;
+}
+
+footer>.inner{
+    height: 320px;
+}
+
+footer>.inner>ul{
+    display: flex;
+    justify-content: flex-start;
+    margin: 50px 0px;
+
+    border-bottom: 1px solid gray;
+}
+
+footer>.inner>ul>li{
+    padding: 10px 20px 30px 0px;
+}
+
+.red{
+    color: red;
+}
+
+footer>.inner>.footerBt{
+    display: flex;
+    justify-content: space-between;
+}
+
+footer>.inner>.footerBt>.footLeft>.t{
+    margin: 10px 0px;
+}
+
+footer>.inner>.footerBt>.footLeft>.t>span{
+    padding: 10px 20px 10px 0px;
+    position: relative;
+}
+
+/*
+footer>.inner>.footerBt>.footLeft>.t>.before::before{
+    padding-right: 10px;
+}
+*/
+
+footer>.inner>.footerBt>.footLeft>.c{
+    font-size: small;
+    padding-top: 20px;
+}
+
+footer>.inner>.footerBt>.footRight>select{
+    width: 210px;
+    height: 45px;
+    padding-left: 20px;
+    border: 1px solid gray;
+    appearance: none;
+    background-image: url(img/sel_icon.png);
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+}
+

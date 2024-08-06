@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Pen+Script&family=Oswald:wght@200..700&family=Playwrite+BE+VLG:wght@100..400&display=swap" rel="stylesheet">
+    <!-- 
+    box의 속성
+    width : 가로 길이
+    height : 세로 길이
+    margin : box의 바깥 여백
+    padding : box의 안쪽 여백
+    box-sizing : box의 크기를 지정하는 속성
+    box-sizing에 따라 width가 컨텐츠의 크기가 될 수도 있고, 박스 전체의 크기가 될 수도 있음
+
+    - border-box => width = 컨텐츠의 가로 + padding + border 
+    - content-box => width = 컨텐츠의 가로
+    
+    width = 100px padding = 5px border = 1px (padding과 border는 left+right)
+    border-box = 5 + 5 + 1 + 1 + ㅁ = 100 >> content = 88 //많이 사용
+    content-box = 5 + 5 + 1 + 1 + 100 = 112px
+    -->
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 5px;
+            background-color: aquamarine;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            padding: 5px;
+            background-color: aqua;
+            box-sizing: content-box;
+            margin-bottom: 5px;
+        }
+        
+        .box2{
+            background-color: rgb(43, 205, 68);
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            border-radius: 5px;
+            
+        }
+        a{
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-size: xx-large;
+            line-height: 50px;
+        }
+
+        a:hover{
+            text-decoration:underline;
+            color: rgb(0, 0, 0);
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-size: xx-large;
+            line-height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box1"></div>
+    <a href="http://naver.com" target="_blank">           
+        <div class="box2">
+            naver   
+        </div>
+    </a>
+</body>
+</html>

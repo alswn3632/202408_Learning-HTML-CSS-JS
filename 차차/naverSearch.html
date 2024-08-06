@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+
+        .search-box{
+            width: 705px;
+            height: 60px;
+
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+        }
+
+
+        .search-box:hover{
+            box-shadow: 5px 5px 5px grey;
+        }
+   
+
+        .search-left{
+            width: 60px;
+            height: 60px;
+            box-sizing: border-box;
+            float: left;
+            border: 1px solid #03c75a;
+            border-right: none;
+            border-radius: 50% 0 0 50% ;
+        }
+
+
+        .search-left>.charN{
+            text-align: center;
+            font-size: xx-large;
+            font-weight: 900;
+            line-height: 53px;
+            color: #03c75a;
+
+            position: absolute;
+            left: 4%;
+        }
+
+        .search-middle{
+            width: calc(100% - 120px);
+            height: 60px;
+            box-sizing: border-box;
+            float: left;
+            border: 1px solid #03c75a;
+            border-left: none;
+            border-right: none;
+        }
+
+
+        .search-middle>input{
+            border: none;
+            outline: none;
+            /*background-color: aqua;*/
+
+            width: 470px;
+            height: 50px;
+            margin: 5px 0 0 11px;
+
+            color: black;
+            font-weight: 700;
+            font-size: large;
+        }
+
+        .search-middle>input::placeholder{
+            color: rgba(128, 128, 128, 0.25);
+            font-weight: 700;
+            font-size: large;
+        }
+
+        .bi-keyboard-fill{
+            color: rgb(175, 175, 175);
+            margin-bottom: 9px;
+            margin-left: 30px;
+            margin-right: 8px;
+        }
+        
+        .bi-caret-down-fill{
+            color: rgb(150, 150, 150);
+            margin-bottom: 7px;
+
+        }   
+
+        .search-right{
+            border: none;
+            background: none;
+            width: 60px;
+            height: 60px;
+            box-sizing: border-box;
+            float: right;
+            border: 1px solid #03c75a;
+            border-left: none;
+            border-radius: 0 50% 50% 0 ;
+        }
+
+        .bi-search{
+            color: #03c75a;
+            margin-bottom: 1px;
+            margin-right: 16px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="search-box">
+        <div class="search-left">
+            <div class="charN">
+                N
+            </div>
+        </div>
+        <div class="search-middle">
+            <input type="text" name="search-content" placeholder="검색어를 입력해주세요.">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-keyboard-fill" viewBox="0 0 16 16">
+                <path d="M0 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm13 .25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25M2.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 8.75v-.5A.25.25 0 0 0 2.75 8zM4 8.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 5 8.75v-.5A.25.25 0 0 0 4.75 8h-.5a.25.25 0 0 0-.25.25M6.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 7 8.75v-.5A.25.25 0 0 0 6.75 8zM8 8.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 9 8.75v-.5A.25.25 0 0 0 8.75 8h-.5a.25.25 0 0 0-.25.25M13.25 8a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zm-3-2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h1.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zm.75 2.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25M11.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zM9 6.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5A.25.25 0 0 0 9.75 6h-.5a.25.25 0 0 0-.25.25M7.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 8 6.75v-.5A.25.25 0 0 0 7.75 6zM5 6.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 6 6.75v-.5A.25.25 0 0 0 5.75 6h-.5a.25.25 0 0 0-.25.25M2.25 6a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h1.5A.25.25 0 0 0 4 6.75v-.5A.25.25 0 0 0 3.75 6zM2 10.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25M4.25 10a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25z"/>
+              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+        </div>
+        <button class="search-right">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>
+        </button>
+    </div>
+    
+</body>
+</html>

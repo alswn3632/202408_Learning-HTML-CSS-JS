@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    input 속성
+    모든 태그는 속성을 가지고 있음
+    <태그명 속성="값" 속성="값" 속성="값" 속성>
+    속성은 순서에 상관 없음.
+    name="" : 서버로 정보를 전송 시 변수명으로 사용되는 속성
+    value="" : 서버로 전송 시 값으로 사용되는 속성
+    >> name=value
+    id="" : 한 페이지에 하나만 허용(중복X) (주로 js에서 사용)
+    id가 겹치면 에러가 발생하지는 않지만 작동하지 않을 수 있고, 올바르게 작동을하지 않을 수 있음
+    class : css / js 구분자 역할을 하는 속성, 중복 가능, 여러 개 가능
+    class="a b c ab" >> a b c ab 4개의 class 사용 
+    readonly : 읽기 전용
+    disabled : 비활성화, 서버로 값을 보내지 않음
+    tabindex : 탭 순서를 정할 때 사용
+    required : 필수 속성
+    -->
+
+    <form action="">
+        <input type="text" name="a" id="" value="111" tabindex="5">
+        <input type="text" name="b" id="" value="222" tabindex="1">
+        <input type="text" name="c" id="" value="333" readonly tabindex="3">
+        <input type="text" name="d" id="" value="444" disabled tabindex="2">
+        <input type="text" name="e" id="" value="555" tabindex="4">
+        <input type="button" disabled value="button">
+
+        <!-- checked : checkbox, radio 버튼에서 사용하면 체크된 것으로 표시 -->
+         <input type="checkbox" name="f" id="" checked> 선택1
+         <input type="checkbox" name="f" id="" > 선택2
+
+         <input type="radio" name="g" id="" checked> 라디오1
+         <input type="radio" name="g" id="" > 라디오1
+
+    </form>
+</body>
+</html>

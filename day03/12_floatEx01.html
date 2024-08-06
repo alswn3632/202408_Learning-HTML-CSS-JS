@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    pbox 가로 크기가 500px
+    자식 box 3개가 pbox 가로를 꽉 차제 동일한 크기로 구성
+    -->
+
+    <style>
+        .pbox{
+            width: 500px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .box1{
+            /*500px / 3 = 166.6666*/
+            /* clac() : 값을 연산할 수 있음. 연산자와 피연산자는 반드시 띄어쓰기*/
+            width: calc(100% / 3);
+            height: 500px;
+            /*border: 1px solid black;*/
+            float: left;
+        }
+
+        .pbox::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .pbox2{
+            width: 500px;
+            background-color: rgb(0, 0, 0);
+        }
+
+        .box2{
+            width: calc(100% / 3);
+            height: 500px;
+            float: left;
+        }
+
+        .box2-2{
+            width: calc(100% / 3 * 2);
+            height: 500px;
+            float: left;
+        }
+
+        .pbox2::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .pbox3{
+            width: 500px;
+            height: 1000px;
+            background-color: brown;
+        }
+
+        .box3{
+            width: calc(100% / 3);
+            height: calc(100% / 2);
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="pbox">
+        <div class="box1" style="background-color: rgba(50, 108, 255, 0.5);"></div>
+        <div class="box1" style="background-color: rgb(47, 210, 255, 0.5);"></div>
+        <div class="box1" style="background-color: rgb(164, 235, 255, 0.5)"></div>
+    </div>
+
+    <div class="pbox2">
+        <div class="box2" style="background-color:rgb(255, 99, 151, 0.5);"></div>
+        <div class="box2-2" style="background-color:rgb(194, 255, 72, 0.5);"></div>
+    </div>
+
+    <div class="pbox3">
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+
+        <div class="box4"></div>
+        <div class="box5"></div>
+    </div>
+</body>
+</html>

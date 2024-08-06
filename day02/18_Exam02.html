@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family:Arial, Helvetica, sans-serif;
+            src: url();
+        }
+        .title{
+            background-color: #b1b1b1;
+            border: 2px solid #000000;
+            text-align: center;
+            color: #000000;
+        }
+        table,tr,td{
+            border: 2px solid #000000;
+            border-collapse: collapse;
+        }
+        .col1{
+            text-align: center;
+            font-weight: 700;
+            background-color: #b1b1b1;
+        }
+        input:hover{
+            background-color: #b1b1b1;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <table>
+            <thead>  
+                <tr class="title">
+                    <td colspan="2"><h1>회원가입</h1></td>
+                </tr>
+            </thead>
+
+            <tbody>  
+                <tr>
+                    <td class="col1">아이디</td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                
+                <tr>
+                    <td class="col1">비밀번호</td>
+                    <td><input type="password" name="pw"></td>
+                </tr>
+                
+                <tr>
+                    <td class="col1">비밀번호 확인</td>
+                    <td><input type="password" name="pwCh"></td>
+                </tr>
+                
+                <tr>
+                    <td class="col1">이메일</td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                
+                <tr>
+                    <td class="col1">성별</td>
+                    <td>
+                        <input type="radio" name="gender" value="m" id="m"><label for="m">남성</label>
+                        <input type="radio" name="gender" value="f" id="f"><label for="f">여성</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="col1">전화번호</td>
+                    <td>
+                        <input type="text" name="num1"> <span>-</span> 
+                        <input type="text" name="num2"> <span>-</span> 
+                        <input type="text" name="num2">
+                    </td>
+                </tr>
+            </tbody>
+            
+            <tfoot>
+                <tr class="submit">
+                    <td colspan="2" style="text-align: center;" >
+                        <input type="submit" value="회원가입">
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+</body>
+</html>

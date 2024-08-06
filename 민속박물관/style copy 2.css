@@ -1,0 +1,608 @@
+@import url(../day06/reset.css);
+
+
+@font-face{
+    font-family: Song_Myung;
+    src: url(../font/Song_Myung/SongMyung-Regular.ttf);
+}
+
+body{
+    font-family: Song_Myung;
+}
+
+.wrap{
+    width: 100%;
+    min-width: 1200px;
+    /*1200px 어떻게 알아냄..?*/
+
+}
+
+.inner{
+    width: 1170px;
+    /*민속박물관 inner 간격 모두 1170px로 동일하고 
+    이 사이즈가 바뀌지 않도록 min-width를 1200px로 적용
+    1200px 보다 줄어들 경우 반응형 있음*/
+
+    margin: auto;
+    box-sizing: border-box;
+    /*모든 inner의 전체적인 사이즈를 맞춤*/
+}
+
+/* header */
+header{
+    width: 100%;
+    /*wrap 사이즈의 100%*/
+
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    /*top이 0px일때 처리*/
+    background-color: white;
+}
+
+header>.inner{
+    height: 115px;
+
+    position: relative; /*h1부모*/
+}
+
+header>.inner>h1{
+    position: absolute;
+    top: 15px;
+}
+
+header>.inner>.top-menu{
+    display: flex;
+    justify-content: end;
+}
+
+header>.inner>.top-menu>li{
+    padding: 10px 20px;
+    /*오른쪽 위 메뉴 글자들 각각 떨어뜨림
+    margin으로 넣지 않은 이유 롯데월드와 아이스링크 사이의 ㅣ << */
+
+    position: relative; /*.before::before의 부모*/
+}
+
+header>.inner>.nav>ul{
+    display: flex;
+    justify-content: center;
+    height: 79px;
+}
+
+header>.inner>.nav>ul>li{
+    margin: 0 40px;
+}
+
+header>.inner>.nav>ul>li>a{
+    font-size: large;
+    font-weight: 700;
+    line-height: 79px;
+}
+
+header>.inner ul>li>a:hover{
+    color: green;
+}
+
+header>.inner .bold{
+    color: rgb(40, 40, 40);
+    font-weight: 700;
+}
+
+header>.inner .bold:hover{
+    color: black;
+}
+
+/*앞으로 쓸 모든 .before에 공통적으로 사용할 수 있다.*/
+.before::before{
+    content: " ";
+    background-color: gray;
+    width: 1px;
+    height: 13px;
+    position: absolute;
+    top: 35%;
+    left: 0px;
+}
+
+/* main-image */
+section{
+    width: 100%;
+    height: 725px;
+    /*그림이미지 픽셀*/
+
+    background-image: url(img/202005111050316900.jpg);
+    background-size: cover;
+    background-position: center;
+
+    /*화살표 위치 조절 대상은 ul태그*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 정 중앙에 모이게됨 */
+}
+
+section>ul{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    /* 너비를90%로 잡아서 양옆에 간격이 생기게 함*/
+}
+
+/* 
+section>ul>li>img:hover{
+    이미지는 font weight를 조정할 수 없기 때문에
+    다른 사진을 추가하여 덮어씌운 것 같다. 
+}
+*/
+
+main>.con1{
+    width: 100%;
+    height: 82px;
+
+    position: relative;
+}
+
+main>.con1>.inner>a{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+main>.con1>.inner>a>ul{
+    display: flex;
+    align-items: center;
+}
+
+main>.con1>.inner>a>ul>li{
+    padding: 15px 10px;
+    position: relative; /*before 부모*/
+}
+
+main>.con1>.inner>a>ul>li{
+    font-size: 18px;
+}
+main>.con1>.inner>a>ul>.bold{
+    font-weight: 700;
+}
+
+main>.con1>.inner>a>ul>.before::before{
+    height: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+/* 상설전시/특별전시 */
+
+main>.con2{
+    height: 900px;
+
+    background-image: url(img/mainCon1_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con2>.inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px;
+
+    position: relative;
+}
+
+main>.con2>.inner>.text1{
+    font-size: 35px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+main>.con2>.inner>.text2{
+    font-size: 18px;
+    color: white;
+    margin-bottom: 60px;
+}
+
+main>.con2>.inner>.pbox{
+    width: 1200px;
+    height: 520px;
+    
+    position: relative;
+}
+
+main>.con2>.inner>.pbox>.equal{
+    width: 1200px;
+    height: 520px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+main>.con2>.inner>.pbox>.equal>:nth-child(1){
+    width: 574px;
+    height: 500px;
+    
+    float: left;
+}
+
+main>.con2>.inner>.pbox>.equal>:nth-child(2){
+    width: 574px;
+    height: 500px;
+
+    float: right;
+}
+
+main>.con2>.inner>.pbox>.equal>a>.img1{
+    width: 574px;
+    height: 420px;
+
+    background-image: url(img/mainCon1_img1.jpg);
+}
+
+main>.con2>.inner>.pbox>.equal>a>.img2{
+    width: 574px;
+    height: 420px;
+
+    background-image: url(img/mainCon1_img2.jpg);
+}
+
+main>.con2>.inner>.pbox>.equal>a>.text{
+    width: 574px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+
+    font-size: 30px;
+    color: white;
+}
+
+main>.con2>.inner>.pbox>.equal>.img-border{
+    width: 570px;
+    height: 500px;
+
+    border: 2px solid rgba(255, 255, 255, 0);
+
+
+}
+
+main>.con2>.inner>.pbox>.equal>.img-border:hover{
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+/* 다양한 프로그램 */
+main>.con3{
+    height: 730px;
+    background-image: url(img/mainCon2_bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+main>.con3>.inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 150px 0;
+
+}
+
+main>.con3>.inner>.text1{
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+main>.con3>.inner>.text2{
+    font-size: 18px;
+    margin-bottom: 55px;
+}
+
+main>.con3>.inner>.pbox{
+    width: 100%;
+    height: 323px;
+    display: flex;
+    justify-content: space-between;
+
+    position: relative;
+
+}
+
+main>.con3>.inner>.pbox>a>.box{
+    width: 375px;
+    height: 323px;
+    
+}
+
+main>.con3>.inner>.pbox>a>.box>.box-text{
+    width: 375px;
+    height: 77px;
+    position: absolute;
+    bottom: 0;
+
+    text-align: center;
+    line-height: 76px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    background-color: white;
+    
+}
+
+main>.con3>.inner>.pbox>a>.box:hover .box-text{
+    color: white;
+    background-color: rgb(0, 98, 0);
+}
+
+main>.con3>.inner>.pbox>a>.box:hover{
+    box-shadow: 10px 10px 10px rgba(166, 166, 166, 0.551);
+}
+
+/* 박물관 소식 */
+main>.con4{
+    width: 100%;
+}
+
+main>.con4>.inner{
+    padding: 150px 0;
+}
+
+main>.con4>.inner>h1{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+main>.con4>.inner>h3{
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+main>.con4>.inner>.news{
+    display: flex;
+    justify-content: space-between;
+}
+
+main>.con4>.inner>.news>.left{
+    border: 1px solid gray;
+    width: 492px;
+    padding: 40px 40px 20px 40px;
+
+    position: relative;
+}
+
+main>.con4>.inner>.news>.left>.more{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 37px;
+    right: 40px;
+    
+    background-image: url(img/newsMoreBt_icon.png);
+    background-repeat: no-repeat;
+    
+}
+
+main>.con4>.inner>.news>.left>.more::before{
+    content: " 더보기 ";
+    position: absolute;
+    font-weight: 300;
+    top: 2px;
+    right: 25px;
+    width: 50px;
+}
+
+main>.con4>.inner>.news>.left>h3{
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+}
+
+main>.con4>.inner>.news>.left>.leftA{
+    display: block;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+main>.con4>.inner>.news>.left>.leftA>p{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 63px;
+}
+
+main>.con4>.inner>.news>.left>.leftA>span{
+    color: gray;
+    font-weight: 300;
+}
+
+main>.con4>.inner>.news>.left>ul{
+    margin-top: 27px;
+}
+
+main>.con4>.inner>.news>.left>ul>li{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+main>.con4>.inner>.news>.left>ul>li>a{
+    width: 405px;
+
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+main>.con4>.inner>.news>.left>ul>li>a:hover{
+    text-decoration: underline;
+}
+
+main>.con4>.inner>.news>.left>ul>li>span{
+    color: gray;
+    font-weight: 300;
+}
+
+main>.con4>.inner>.news>.right{
+    width: 574px;
+}
+
+main>.con4>.inner>.news>.right>.top{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+main>.con4>.inner>.news>.right>.top>.r1{
+    background-image: url(img/mainCon3_util1_img1.png);
+    background-size: auto; /*자기자신 크기*/
+    background-repeat: no-repeat;
+    background-position: 50% 40%; /*가로 세로*/
+    width: 276px;
+    height: 188px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    padding: 128px 40px 40px 40px;
+
+}
+
+main>.con4>.inner>.news>.right>.top>.r2{
+    background-image: url(img/mainCon3_util1_img2.png);
+    background-size: auto; 
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    width: 276px;
+    height: 188px;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    padding: 128px 40px 40px 40px;
+
+}
+
+main>.con4>.inner>.news>.right>.bt{
+    background-image: url(img/mainCon3_banner.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 574px;
+    height: 192px;
+
+    padding: 40px;
+    box-sizing: border-box;
+
+    margin-top: 20px;
+}
+
+main>.con4>.inner>.news>.right>.bt>p{
+    font-size: 30px;
+    font-weight: 300;
+    color: white;
+
+}
+
+main>.con4>.inner>.news>.right>.bt>.more{
+    margin-top: 20px;
+
+}
+main>.con4>.inner>.news>.right>.bt>.more>a{
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+
+}
+
+main>.con4>.inner>.news>.right>.bt>.more>a::after{
+    content: url(img/mainCon3_banner_icon.png);
+    margin-left: 10px;
+}
+
+/* footer */
+
+footer{
+    width: 100%;
+    height: 354px;
+    border-top: 1px solid gray;
+}
+
+footer>.inner{
+    padding: 50px 0px 130px;
+
+}
+
+footer>.inner>.top{
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid gray;
+    padding: 30px 0;
+}
+
+footer>.inner>.top>ul{
+    display: flex;
+    justify-content: flex-start;
+}
+
+footer>.inner>.top>ul>li>a{
+    font-size: 16px;
+    margin-right: 20px;
+    color: gray;
+}
+
+footer>.inner>.top>ul>li>.red{
+    color: red;
+}
+
+footer>.inner>.bottom{
+    width: 100%;
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+footer>.inner>.bottom>.left>.ad>span{
+    font-size: 15px;
+    margin-right: 10px;
+    color: gray;
+}
+
+footer>.inner>.bottom>.left>p{
+    margin-top: 10px;
+}
+
+footer>.inner>.bottom>.left>.ad>.before::before{
+    content: " ";
+    width: 1px;
+    height: 17px;
+
+    position: absolute;
+
+}
+
+footer>.inner>.bottom>.left>.copy{
+    margin-top: 20px;
+    font-size: 14px;
+    color: gray;
+}
+
+footer>.inner>.bottom>.right>select{
+    width: 210px;
+    height: 45px;
+    text-align: center;
+    font-size: 15px;
+}
+
+footer>.inner>a>img{
+    position: absolute;
+    right: 2%;
+    transform: translateY(-226%);
+}

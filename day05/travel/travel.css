@@ -1,0 +1,109 @@
+
+body{
+    background-color: rgba(245, 245, 245, 0.5);
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    text-align: center;
+}
+
+header>div{
+    width: 100%;
+    height: 150px;
+
+    background-image: url(../../image/인스타그램2.jpg);
+    background-size: cover;
+    background-position: center;
+
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 145px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.main-menu{
+    width: 900px;
+    height: 60px;
+    
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-image: url(../../image/인스타그램2.jpg);
+    background-position: left;
+    background-size: cover;
+
+    box-shadow: 5px 5px 5px grey;
+}
+
+.main-menu>a{
+    display: block;
+    float: left;
+    width: calc(900px / 4);
+    height: 60px;
+    background-color: rgba(184, 184, 184, 0.8);
+    
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 55px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.main-menu>a:hover{
+    cursor: pointer;
+    background-color: rgba(214, 214, 214, 0.2);
+}
+
+.img-box{
+    width: 900px;
+    height: 900px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 5px 5px 5px grey;
+    
+    position: relative;
+}
+
+.main-img{
+    width: 90%;
+    height: 80%;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-57%);
+
+    background-image: url(../../image/비행기.jfif);
+    background-size: cover;
+    background-position: center;
+}
+
+.icon-box{
+    width: 90%;
+    height: 10%;
+
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.icon-box>:first-child{
+    color: rgb(227, 53, 53);
+    margin-left: 5px;
+    margin-right: 10px
+}
+
+.icon-box>:nth-child(2){
+    color: rgb(40, 40, 40);
+}
+
+.icon-box>:nth-child(3){
+    color: rgb(40, 40, 40);
+    float: right;
+    margin-right: 5px;
+}

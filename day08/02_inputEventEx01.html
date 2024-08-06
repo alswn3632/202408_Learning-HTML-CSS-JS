@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+
+        table th, td{
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        table .bold{
+            background-color: rgb(161, 161, 161);
+            font-weight: 700;
+        }
+
+        table .w30{
+            width: 300px;
+        }
+
+        table .w50{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        성적확인
+        이름 : input
+        국어 : input
+        영어 : input
+        수학 : input
+        성적 계산 버튼
+        -------------
+        ul -> li
+        이름 : 홍길동
+        국어 : 98
+        영어 : 95
+        수학 : 90
+        합계 : --
+        평균 : --
+    -->
+
+    <form action="">
+        <fieldset>
+            <legend>성적 확인</legend>
+            이름: <input type="text" id="name"><br>
+            국어: <input type="text" id="kor"><br>
+            영어: <input type="text" id="eng"><br>
+            수학: <input type="text" id="math"><br>
+            <button type="button" onclick="scoreCalc()">성적 계산</button>
+        </fieldset>
+    </form>
+
+    <ul id="ul"></ul>
+
+    <table id="table">
+
+    </table>
+
+    <script>
+        
+        const myObject = {
+            name:'',
+            kor:'',
+            eng:'',
+            math:''
+        };
+
+        
+        function scoreCalc(){
+            const name = document.getElementById('name');
+            const kor = document.getElementById('kor');
+            const eng = document.getElementById('eng');
+            const math = document.getElementById('math');
+            const ul = document.getElementById('ul');
+            
+            // **let kor = document.getElementById('kor').value; 로 한번에 가져올 수 있다. 
+            let korN = Number(kor.value);
+            let engN = Number(eng.value);
+            let mathN = Number(math.value);
+            // Number 첫 글자 대문자 N 주의**
+            
+            myObject.name = name.value;
+            myObject.kor = kor.value;
+            myObject.eng = eng.value;
+            myObject.math = math.value;
+            console.log(myObject);
+
+            let sum = korN + engN + mathN;
+            let evg = (sum / 3).toFixed(2);
+            // Math.round() => 정수로 반올림. 소수점을 남기지 않음.
+            // .toFixed() => 소수 자리수 표현. 반올림하여 소수점 자르기.
+
+            // table 태그에 입력 테이블로 표시
+            table = document.getElementById('table');
+            let tableStr = `<tr><th class="w30">이름</th><td class="w50">${name.value}</td></tr>`
+            tableStr += `<tr><th>국어점수</th><td>${kor.value}</td></tr>`
+            tableStr += `<tr><th>영어점수</th><td>${myObject.eng}</td></tr>`
+            tableStr += `<tr><th>수학점수</th><td>${myObject.math}</td></tr>`
+            tableStr += `<tr><th class="bold">합계</th><td class="bold">${sum}</td></tr>`
+            tableStr += `<tr><th class="bold">평균</th><td class="bold">${evg}</td></tr>`
+
+            table.innerHTML = tableStr;
+
+            // ul 태그로 표시
+            let str = `<li>이름: ${name.value}</li>`;
+            str += `<li>국어: ${korN}</li>`;
+            str += `<li>영어: ${engN}</li>`;
+            str += `<li>수학: ${mathN}</li>`;
+            str += `<li>합계: ${sum}</li>`;
+            str += `<li>평균: ${evg}</li>`;
+            
+            ul.innerHTML = str;
+        }
+
+        </script>
+</body>
+</html>

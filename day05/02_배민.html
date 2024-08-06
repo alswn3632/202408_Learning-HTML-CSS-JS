@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        @font-face{
+            font-family: font;
+            src: url(../font/fonts/ttf/BMHANNAPro.ttf);
+        }
+
+        @keyframes twinkle{
+            from{
+                color: black;
+            }
+            50%{
+                color: red;
+            }
+            to{
+                color: red;
+            }
+        }
+
+        @keyframes expansion{
+            from{
+                background-size: 100%;
+            }
+            to{
+                background-size: 105%;
+            }
+        }
+
+        body{
+            background-color: rgb(42, 193, 188);
+        }
+
+        header{
+            width: 100%;
+            background-color: rgb(70, 207, 202);
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            
+            text-align: center;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: larger;
+            color: white;
+        }
+
+        .menu-box{
+            position: absolute;
+            top: 250px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .menu{
+            width: 250px;
+            height: 400px;
+            background-color: white;
+
+            border-radius: 10px;
+
+            margin-bottom: 50px;
+
+            box-shadow: 1px 1px 5px rgb(33, 153, 149);
+        }
+
+        .menu:hover{
+            box-shadow: 5px 5px 5px rgb(33, 153, 149);
+        }
+
+        .image{
+            width: 250px;
+            height: 200px;
+            background-color: white;
+            background-image: url(../image/음식1.jpg);
+            background-position: center;
+            background-size: cover;
+
+            border-radius: 10px 10px 0 0 ;
+        }
+
+        .image:hover{
+            animation: expansion 1s 1;
+        }
+
+        .text{
+            width: 250px;
+            height: 200px;
+            box-sizing: border-box;
+            padding: 5px 20px;
+            text-align: center;
+            font-family: "Noto Sans KR", sans-serif;
+            color: rgb(28, 28, 28);
+        }
+        
+        .text>:nth-child(1){
+            font-weight: 700;
+        }
+        
+        .text>:nth-child(2){
+            height: 40px;
+            font-size: small;
+            white-space: wrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .text>:nth-child(3){
+            font-size: small;
+        }
+        
+        .text>:nth-child(3)>span{
+            font-weight: bold;
+            animation: twinkle 0.3s infinite;
+        }
+
+        .text>:nth-child(4){
+            color: mediumblue;
+            font-size: small;
+        }
+
+        .text>:nth-child(4):hover{
+            cursor: pointer;
+            color: rgb(201, 0, 0);
+            font-weight: bold;
+        }
+
+        .image1{
+            background-image: url(../image/음식\ \(10\).jpg);
+        }
+
+        .image2{
+            background-image: url(../image/음식\ \(1\).jpg);
+        }
+
+        .image3{
+            background-image: url(../image/음식\ \(8\).jpg);
+        }
+
+        .image4{
+            background-image: url(../image/음식\ \(3\).jpg);
+        }
+
+        .image5{
+            background-image: url(../image/음식\ \(9\).jpg);
+        }
+    </style>
+</head>
+<body>
+    <!-- rgb(42, 193, 188) -->
+    <header>
+        <h1>배달의 민족</h1>
+        <h3>"넌 배달할 때가 제일 멋있어"</h3>
+    </header>
+
+    <!-- 여기서부터 메뉴 시작 -->
+    <div class="menu-box">
+        <div class="menu menu1">
+            <div class="image image1"></div>
+            <div class="text">
+                <h4>즉석 떡볶이</h4>
+                <p>우리가 사랑한, 추억의 학교 앞 <br>즉석 떡볶이 [누들면 추가!]</p>
+                <p><del>14,000원</del> <span>12,000원</span></p>
+                <p>바로결제</p>
+            </div>
+        </div>
+        
+        <div class="menu menu2">
+            <div class="image image2"></div>
+            <div class="text">
+                <h4>더블 치즈 버거</h4>
+                <p>더블패티에 생양파와 피클을 더해 <br>미국식 수제버거의 풍미를 최상으로 <br>느낄 수 있는 버거 세트</p>
+                <p><del>8,000원</del> <span>5,000원</span></p>
+                <p>바로결제</p>
+            </div>
+        </div>
+        
+        <div class="menu menu3">
+            <div class="image image3"></div>
+            <div class="text">
+                <h4>에비 텐동</h4>
+                <p>왕새우 4마리가 들어있는 에비텐동. <br>새우가 실합니다. 우동국물 포함</p>
+                <p><del>20,000원</del> <span>15,000원</span></p>
+                <p>바로결제</p>
+            </div>
+        </div>
+        
+        <div class="menu menu4">
+            <div class="image image4"></div>
+            <div class="text">
+                <h4>우동</h4>
+                <p>일본 정통 사누키 우동제조사인 <br>산사스의 프리미엄 우동면에 1세기를 거친 일본의 노포 사라시나에서도 사용하는 혼가에시를 곁들인 명푼 우동</p>
+                <p><del>10,000원</del> <span>8,000원</span></p>
+                <p>바로결제</p>
+            </div>
+        </div>
+        
+        <div class="menu menu5">
+            <div class="image image5"></div>
+            <div class="text">
+                <h4>파스타</h4>
+                <p>매출 1위. 토마토와 크림소스를 <br>황금비율로 녹여 만든 부드러운 로제 크림 파스타</p>
+                <p><del>13,000원</del> <span>10,000원</span></p>
+                <p>바로결제</p>
+            </div>
+        </div>
+    </div>
+    <!-- 5개 복사 -->
+</body>
+</html>

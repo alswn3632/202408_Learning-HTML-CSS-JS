@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    text 속성
+    - text-align : 정렬 left, right, center, justify(양쪽)
+    - text-indnet : 들여쓰기
+    - text-decoration : 선긋기
+        none : 없음
+        underline : 밑줄
+        overlinr : 윗줄
+        line-through : 가운데줄 (취소선)
+    - text-shadow : 글자 그림자
+        - 좌측px 상단px 번짐정도px 색상
+        - 중첩 가능(멀티가능), (,) 콤마로 계속 이어나갈 수 있다.
+    - letter-spacing : 글자간 간격
+    - word-spacing : 단어간 간격
+    - line-height : 글자 기준선 높이
+    - white-space : 컨텐츠 감싸기 방법
+        - 텍스트가 박스를 벗어날 때
+        - wrap : 여러줄 만들기
+        - nowrap : 한줄 처리
+    - text-overflow : 텍스트가 범위를 넘어가는 경우 처리
+        - ellipsis : 넘어가는 부분의 단위를 ""..."으로 처리
+    - overflow : 요소가 넘어가면 어떻게 처리할지 결정
+        - hidden : 숨김처리
+        - scroll : 스크롤바 생성
+        - auto : 스크롤을 자동 생성
+    -->
+
+    <!-- 
+    css 표준 단위
+    px : 픽셀
+    % : 퍼센트 현재 값을 기준으로 %
+    em : 배수, 부모값을 기준으로 배수
+    rem : 배수, 문서의 값을 기준으로 배수
+    cm/mm/in : 각 단위
+    pt : 포인터 1pt = 1/72 in
+    pc : 피카소 1px = 12pt
+    deg : 각도
+    -->
+    <style>
+        p{
+            text-indent: 20px;
+            text-align: justify;
+            /*word-spacing: 20px;
+            letter-spacing: 5px;*/
+        }
+
+        .line{
+            width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit dui ac felis placerat rutrum. Sed dictum diam ac nisi lobortis, eget pretium enim consectetur. Nulla facilisi. Phasellus vel mi gravida, consequat lorem a, bibendum ligula. Nam vel posuere leo. In sapien nisi, varius at mattis non, ullamcorper a odio. Praesent elementum at ante nec ultricies. Nullam fermentum elementum luctus. Quisque eu mi eu massa mattis accumsan. Curabitur ut commodo tellus. Vivamus eleifend diam in quam mollis venenatis. Phasellus vitae massa elit. Ut diam orci, luctus vel vestibulum nec, commodo id arcu. Maecenas aliquam nisi sed libero consequat scelerisque.
+    </p>
+    <p class="line">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit dui ac felis placerat rutrum. Sed dictum diam ac nisi lobortis, eget pretium enim consectetur. Nulla facilisi. Phasellus vel mi gravida, consequat lorem a, bibendum ligula. Nam vel posuere leo. In sapien nisi, varius at mattis non, ullamcorper a odio. Praesent elementum at ante nec ultricies. Nullam fermentum elementum luctus. Quisque eu mi eu massa mattis accumsan. Curabitur ut commodo tellus. Vivamus eleifend diam in quam mollis venenatis. Phasellus vitae massa elit. Ut diam orci, luctus vel vestibulum nec, commodo id arcu. Maecenas aliquam nisi sed libero consequat scelerisque.
+    </p>
+</body>
+</html>

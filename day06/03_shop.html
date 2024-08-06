@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url(reset.css);
+        
+        /* 
+        body{
+            body 전체에 폰트설정을 해줄 수 있다.
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            
+            변형 방지
+            min-width: 1150px;
+        }
+        */
+
+        header{
+            width: 100%;
+            height: 80px;
+            margin: 0 auto;
+            position: sticky;
+            top: 0;
+            
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header>.logo{
+            font-size: 22px;
+            font-weight: bold;
+            margin-left: 5%;
+        }
+
+        header>ul{
+            display: flex;
+            justify-content: space-between;
+            margin-right: 5%;
+        }
+
+        header>ul>li>a{
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        header>ul>li>a:hover{
+            color: rgb(203, 18, 18);
+        }
+
+        body>a>.a-top{
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+
+            border: 1px solid rgb(77, 77, 77);
+            box-shadow: 0 1px 2px 0px gray;
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255);
+
+            text-align: center;
+            line-height: 42px;
+            font-size: 20px;
+            font-weight: bold;
+            color: gray;
+        }
+
+        body>.ad-banner{
+            width: 100%;
+            height: 450px;
+            background-color: aquamarine;
+            background-image: url(../image/투썸플레이스/배경사진2.jpg);
+        }
+
+        body>.main{
+            width: 1100px;
+            margin: 0 auto;
+            /*background-color: aqua;*/
+            display: flex;
+            flex-direction: column;
+        }
+
+        body>.main>.main-title{
+            margin: 0 auto;
+            padding: 60px;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        body>.main>.product-box{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+        }
+
+        body>.main>.product-box>.product{
+            width: 345px;
+            height: 500px;
+            /*background-color: rgba(169, 169, 169, 0.258);*/
+
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+
+        }
+
+        body>.main>.product-box>.product:hover{
+            box-shadow: 1px 1px 5px rgb(216, 216, 216);
+        }
+
+        body>.main>.product-box>.product>.img{
+            width: 90%;
+            height: 50%;
+            background-color: aquamarine;
+            margin: 15px auto;
+            margin-bottom: 30px;
+
+            transition: trasform 0.3s;
+        }
+
+        /*
+        overflow: hidden;
+        img의 부모 div의 크기를 잡고 히든을 줘서 사진 크기가 넘어가면 안보이게 할 수 있다. 
+        D:\_htmlCssJs\차차\플렉스.html 여기서 확인할 수 있음.
+        */
+
+        body>.main>.product-box>.product>.img:hover{
+            transform: scale(1.1)
+        }
+
+
+        
+        body>.main>.product-box>.product>.name{
+            margin-left: 20px;
+            margin-bottom: 15px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        body>.main>.product-box>.product>.price{
+            margin-left: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        body>.main>.product-box>.product>.bar{
+            width: 90%;
+            margin: 0 auto;
+            border-top: 1px solid gray;
+            margin-bottom: 18px;
+        }
+
+        body>.main>.product-box>.product>.content{
+            width: 90%;
+            height: 97px;
+            margin: 0 auto;
+            
+            font-weight: bold;
+            overflow: hidden;
+            white-space: wrap;
+        }
+
+        footer{
+            width: 100%;
+            display: flex;
+            border-top: 1px solid gray;
+        }
+
+        footer>.sns-icon{
+            margin: 20px auto;
+    
+        }
+
+        footer>.sns-icon>a>svg{
+            margin: 0 15px;
+            color: gray;
+        }
+
+        body>.main>.product-box>.product>.img1{
+            background-image: url(../image/투썸플레이스/음료1.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img2{
+            background-image: url(../image/투썸플레이스/음료2.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img3{
+            background-image: url(../image/투썸플레이스/음료3.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img4{
+            background-image: url(../image/투썸플레이스/케이크1.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img5{
+            background-image: url(../image/투썸플레이스/케이크2.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img6{
+            background-image: url(../image/투썸플레이스/케이크3.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img7{
+            background-image: url(../image/투썸플레이스/케이크4.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img8{
+            background-image: url(../image/투썸플레이스/케이크5.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        body>.main>.product-box>.product>.img9{
+            background-image: url(../image/투썸플레이스/디저트2.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body id="top">
+    <header>
+        <a href="" class="logo">A TWOSOME PLACE</a>
+        <ul>
+            <li><a href="">CONTENT</a></li>
+            <li><a href="">SHOP</a></li>
+            <li><a href="">CART</a></li>
+            <li><a href="">LOGIN</a></li>
+        </ul>
+    </header>
+    <body>
+        <a href="#top"><div class="a-top">^</div></a>
+        <div class="ad-banner"></div>
+        <div class="main">
+            <div class="main-title">메뉴이야기</div>
+            <div class="product-box">
+                <div class="product">
+                    <div class="img img1"></div>
+                    <div class="name">스페니쉬 연유 라떼</div>
+                    <div class="price">5,800원</div>
+                    <div class="bar"></div>
+                    <div class="content">평화로운 유럽 초원의 감성을 담은 부드럽고 달콤한 스페니쉬 연유라떼</div>
+                </div>
+                <div class="product">
+                    <div class="img img2"></div>
+                    <div class="name">아메리카노</div>
+                    <div class="price">4,500원</div>
+                    <div class="bar"></div>
+                    <div class="content">아메리카노보다 진하고 부드러운 플레이버를 느낄 수 있는 에스프레소 음료</div>
+                </div>
+                <div class="product">
+                    <div class="img img3"></div>
+                    <div class="name">허니 레몬티</div>
+                    <div class="price">6,100원</div>
+                    <div class="bar"></div>
+                    <div class="content">진한 TWG 프렌치 얼그레이의 향과 달콤한 꿀, 상큼한 레몬이 녹아든 향긋한 티</div>
+                </div>
+                <div class="product">
+                    <div class="img img4"></div>
+                    <div class="name">스트로베리 초콜릿 생크림</div>
+                    <div class="price">6,800</div>
+                    <div class="bar"></div>
+                    <div class="content">한가득 올린 상큼한 딸기, 크런치 초코볼이 초콜릿 생크림 사이사이 씹히는 투썸 시그니처 케이크</div>
+                </div>
+                <div class="product">
+                    <div class="img img5"></div>
+                    <div class="name">마스카포네 티라미수</div>
+                    <div class="price">6,500</div>
+                    <div class="bar"></div>
+                    <div class="content">마스카포네 치즈 크림과 에스프레소 커피 시럽이 촉촉하게 어우러진 이탈리안 무스 케이크</div>
+                </div>
+                <div class="product">
+                    <div class="img img6"></div>
+                    <div class="name">아이스 박스</div>
+                    <div class="price">6,500</div>
+                    <div class="bar"></div>
+                    <div class="content">마스카포네 크림 사이사이 블랙 쿠키를 층층이 쌓고 촉촉하고 부드럽게 즐길 수 있는 아메리칸 스타일의 케이크</div>
+                </div>
+                <div class="product">
+                    <div class="img img7"></div>
+                    <div class="name">레드벨벳</div>
+                    <div class="price">6,500</div>
+                    <div class="bar"></div>
+                    <div class="content">붉은 컬러 시트에 고소한 버터 크림치즈를 풍부하게 올려 불륨감이 돋보이는 투썸 대표 구움 케이크</div>
+                </div>
+                <div class="product">
+                    <div class="img img8"></div>
+                    <div class="name">뉴욕 치즈 케이크</div>
+                    <div class="price">6,500</div>
+                    <div class="bar"></div>
+                    <div class="content">부드럽고 촉촉한 식감과 진한 치즈의 맛을 느낄 수 있는 정통 뉴욕 스타일의 구움 치즈 케이크</div>
+                </div>
+                <div class="product">
+                    <div class="img img9"></div>
+                    <div class="name">소프트 아이스크림(컵)</div>
+                    <div class="price">3,200</div>
+                    <div class="bar"></div>
+                    <div class="content">입안 가득 꽉 차는 크리미한 풍미의 부드러운 소프트 아이스크림</div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+    <footer>
+        <div class="sns-icon">
+            <a href="https://www.instagram.com/atwosomeplace_official/?igshid=1vu3rl2z5ps7n"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg></a>
+            <a href="https://www.youtube.com/channel/UCDjdk0ufvcvV08hAm_vF06Q"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+              </svg></a>
+            <a href="https://x.com/TWOSOMEsays"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+              </svg></a>
+        </div>
+    </footer>
+</body>
+</html>
