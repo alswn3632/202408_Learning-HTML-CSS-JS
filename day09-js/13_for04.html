@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>향상된 for문</h1>
+    <ul>
+        <li>
+            for of : 배열 안의 내용을 탐색할 때 사용 []
+            for(let value of Array){
+                code...;
+            }
+        </li>
+        <li>
+            for in : 객체 안의 내용을 탐색할 때 사용 {}
+            for(let value in Object){
+                <!-- key:value -->
+                code...;
+            }
+
+        </li>
+    </ul>
+    <h3>약수 출력하기</h3>
+    <input type="text" id="num">
+    <button type="button" id="btn">약수 출력</button>
+    <h3 id="result">
+        약수 출력 / 개수 <br>
+    </h3>
+
+    <script>
+        //약수는 1부터 나 자신의 수(num)까지 나눈 나머지가 0인수
+        let resultStr = document.getElementById('result').innerHTML;
+        
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let num = Number(document.getElementById('num').value);
+            let count = 0;
+            let str = `${resultStr}`; // 생성 후 누적 문제 사라짐
+
+            for(let i=1; i<=num; i++){
+                if(num%i==0){
+                    count++;
+                    str += `${i} `;
+                }
+            }
+            str += `${count}개`;
+            
+            document.getElementById('result').innerHTML = str;
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>가위바위보 10 승률 출력하기</h1>
+    <button type="button" id="btn">결과 출력</button>
+    <h3>10게임의 승률은 <span id="result"></span>% 입니다.</h3>
+
+    <script>
+        //가위=1, 바위=2, 보=3
+        //com=random / player=random
+        //승률: (승 / (10-무))*100, 소수점 2자리까지 표현
+        //콘솔에서 com / player 출력
+        //콘솔에에서 승: 무: 패: 횟수 출력
+
+        document.getElementById('btn').addEventListener('click', () =>{
+            let countDraw = 0;
+            let countWin = 0;
+            let countLose = 0;
+
+            function conversion(num){
+                let str="";
+                switch(num){
+                    case 1: str = '가위'; break;
+                    case 2: str = '바위'; break; 
+                    case 3: str = '보'; break;
+                }
+                return str;
+            }
+
+            for(let i=1; i<=10; i++){
+
+                let com = Math.floor(Math.random()*3)+1;
+                let player = Math.floor(Math.random()*3)+1;
+
+                if(player==com){countDraw++;}
+                else{
+                    if(player==1){com==2? countLose++ : countWin++}
+                    else if(player==2){com==3? countLose++ : countWin++}
+                    else if(player==3){com==1? countLose++ : countWin++}
+                }
+
+                console.log(`player: ${conversion(player)} com: ${conversion(com)}`)
+            }
+
+            console.log(`승: ${countWin} 패: ${countLose} 무: ${countDraw}`)
+            document.getElementById('result').innerText = `${(countWin/(10-countDraw)*100).toFixed(2)}`
+        })
+    </script>
+</body>
+</html>

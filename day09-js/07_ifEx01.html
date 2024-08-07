@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form>fieldset{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>성적 입력</legend>
+                이름: <input type="text" id="name"> <br>
+                국어: <input type="text" id="kor"> <br>
+                영어: <input type="text" id="eng"> <br>
+                수학: <input type="text" id="math"> <br>
+                <button type="button" id="btn">제출</button>
+        </fieldset>
+    </form>
+
+    <h3 id="h3"></h3>
+
+    <script>
+        // 이름, 국어, 영어, 수학 점수를 입력 받아 합계, 평균, 합격여부 출력
+        // 합격여부는 평균이 60 이상이면 pass, fail
+
+        // 입력 값의 범위가 0~100 사이의 점수가 아니면 alert 창을 띄워 안내문구 
+
+        document.getElementById('btn').addEventListener('click', ()=>{
+        let name = document.getElementById('name').value;
+        let kor = Number(document.getElementById('kor').value);
+        let eng = Number(document.getElementById('eng').value);
+        let math = Number(document.getElementById('math').value);
+
+        const h3 = document.getElementById('h3');
+
+            if((kor>=0 && kor<=100/*0<=kor<=100*/) && (eng>=0 && eng<=100) && (math>=0 && math<=100)){
+                let sum = kor + eng + math;
+                let avg = sum / 3;
+                let result = (evg>=60)? 'pass' : 'fail'
+
+                h3.innerText = 
+                `이름: ${name}, 국어: ${kor}점, 영어: ${eng}점, 수학: ${math}점, 합계: ${sum}점, 평균: ${avg.toFixed(2)}점, ${result}`
+            }else{
+                alert(`잘못된 점수를 입력했습니다. 0에서 100 사이의 숫자를 입력해주세요.`)
+            }
+        
+        })    
+        
+    </script>
+</body>
+</html>

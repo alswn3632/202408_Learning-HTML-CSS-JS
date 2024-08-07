@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>날짜 관련 함수</h1>
+    <ul>
+        <li>new Date() => 오늘 날짜 반환
+            new Date(String => String 날짜 형식으로 변환) </li>
+        <li>getFullYear(); 연도만 리턴 </li>
+        <li>getMonth(); => 0월부터 11월까지
+            **getMonth()+1; '+1'을 반드시 해줘야함. </li>
+        <li>getDate(); => 1일부터 31일까지 </li>
+        <li>getDay(); => 요일을 리턴 0(일)부터 6(토)까지. </li>
+        <li>getHours(), getMinutes(), getSeconds() : 시분초 추출</li>
+        <li>toLocaleDateString() : 2024. 8. 7.
+            toLocaleTimeString() : 오전 10:01:35
+            toLocaleString() : 2024. 8. 7. 오전 10:01:40</li>
+    </ul>
+
+    <script>
+        let today = new Date();
+        console.log(today);
+        // Wed Aug 07 2024 09:55:17 GMT+0900 (한국 표준시) 출력
+
+        // 년 월 일 요일
+        console.log(today.getFullYear()); // 2024 출력
+        console.log(today.getMonth()); // 7 (getMonth만 썼을 때)
+        console.log(today.getMonth()+1); // 8 ('+1' 추가 => 실제 월)
+        console.log(today.getDate()); // 7
+        console.log(today.getDay()); // 3 출력 => 수요일
+
+        // 시 분 초
+        console.log(today.getHours()); // 9
+        console.log(today.getMinutes()); // 58
+        console.log(today.getSeconds()); // 18
+        
+        // 가독성 up
+        console.log(today.toLocaleDateString()); // 2024. 8. 7.
+        console.log(today.toLocaleTimeString()); // 오전 10:01:53
+        console.log(today.toLocaleString()); // 2024. 8. 7. 오전 10:01:58
+    </script>
+</body>
+</html>

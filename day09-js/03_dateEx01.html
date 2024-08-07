@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>인적사항</legend>
+            이름: <input type="text" id="name"> <br>
+            주민번호: <input type="text" id="residentNum"> <br>
+            <button type="button" onclick="print()">확인</button>
+        </fieldset>
+    </form>
+
+    <h3 id="h3"></h3>
+
+    <script>
+        function print(){
+
+            let name = document.getElementById('name').value; // 이름
+            let resNum = document.getElementById('residentNum').value;
+            
+            let year = (new Date()).getFullYear(); // 올해 년도 2024
+            
+            let birth = resNum.substring(0,resNum.indexOf('-')); //생년월일
+            // string 타입이라고 확정되어있지 않기 때문에 .substring()을 쓸 때 
+            // 미리보기가 실행되지 않는다. 자바스크립트는 자료형을 지정하지 않기 때문에
+            // 이런 일이 발생할 수 있다. 
+            let birthYear = birth.substring(0,2);
+            birthYear = Number(birthYear);
+
+            let gender = resNum.charAt(resNum.indexOf('-')+1);
+            
+            let age;
+            
+            if(gender == 1 || gender == 2){
+                birthYear += 1900;
+                age = year - birthYear;
+            } else if(gender == 3 || gender == 4){
+                birthYear += 2000;
+                age = year - birthYear;
+            } else {
+                h3.innerText = `주민번호를 잘못 입력했습니다.`
+            }
+
+            const h3 = document.getElementById('h3');
+            h3.innerText = `이름: ${name}, 생년월일: ${birth}, 나이: ${age}, 성별:${(gender == 1 || gender == 3)? '남' : '여'}`
+            
+        }
+    </script>
+</body>
+</html>

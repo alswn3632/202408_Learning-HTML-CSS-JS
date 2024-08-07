@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1~10까지의 합계 -->
+
+    <script>
+        let sum = 0;
+
+        for(let i=1; i<=10; i++){
+            sum += i;
+        }
+
+        console.log(sum)
+        
+        sum = 0;
+        let i = 1;
+
+        while(i<=10){
+            sum += i;
+            i++;
+        }
+        
+        console.log(sum)
+        
+        console.log('----------')
+
+        //구구단 3단 출력 3*1=3
+        let dan = 3;
+        let incre = 1;
+        
+        while(incre<10){
+            console.log(`${dan} x ${incre} = ${dan*incre}`);
+            incre++;
+        }
+
+
+    </script>
+</body>
+</html>

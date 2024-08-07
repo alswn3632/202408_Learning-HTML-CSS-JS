@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fileName = "20240807_javascript.string_method.html"
+
+        // 작성 일자 분리
+        console.log(fileName.substring(0,8)) //마지막 번지를 포함하지 않음.
+
+        // 파일명 분리 indexOf / laseIndexOf : 뒤에서부터 검색
+        console.log(fileName.lastIndexOf(".")); // 33
+        console.log(fileName.indexOf("_")); // 8
+        console.log(fileName.substring(fileName.indexOf("_")+1,fileName.lastIndexOf(".")));
+        // javascript.string_method 출력
+
+        // 확장자
+        console.log(fileName.substring(fileName.lastIndexOf(".")+1));
+    </script>
+</body>
+</html>
