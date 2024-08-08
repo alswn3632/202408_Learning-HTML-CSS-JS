@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .pbox{
+            width: 1000px;
+            height: 600px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pbox>.top{
+            width: 100% ;
+            height: 50%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        div>.top>button{
+            width: 300px;
+            height: 300px;
+            border: none;
+        }
+
+        .btn1{
+            background-image: url(../image/가위바위보.가위.jpg);
+            background-size: contain;
+            background-position: center;
+        }
+
+        .btn2{
+            background-image: url(../image/가위바위보.바위.jpg);
+            background-size: contain;
+            background-position: center;
+        }
+
+        .btn3{
+            background-image: url(../image/가위바위보.보.jpg);
+            background-size: contain;
+            background-position: center;
+        }
+
+        .pbox>.bottom{
+            width: 100%;
+            height: 300px;
+
+            text-align: center;
+            cursor: pointer;
+
+        }
+
+        .pbox>.bottom>#h3{
+            height: 300px;
+            font-size: x-large;
+            color: rgb(58, 58, 58);
+        }
+
+        .pbox>.bottom>.reset{
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+
+            width: 100px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+        
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pbox">
+        <div class="top">
+            <button onclick="play(1)" class="btn1"></button>
+            <!-- 버튼을 누를때 파라미터와 함께 전송 -->
+            <button onclick="play(2)" class="btn2"></button>
+            <button onclick="play(3)" class="btn3"></button>
+        </div>
+        <div class="bottom">
+            <h3 id="h3"></h3>
+            <button class="reset" onclick="resetRate()">전적 초기화</button>
+        </div>
+    </div>
+    <script>
+        
+        let countDraw = 0;
+        let countWin = 0;
+        let countLose = 0;
+        let totalCount = 0;
+
+        //플레이 버튼과 연결
+        function play(player){
+            totalCount++;
+            let user = player;
+            let comp = com();
+
+            let result = match(user,comp);
+            let str = '';
+            
+            switch(result){
+                case 1: countWin++; str = '플레이어 승리!'; break;
+                case 0: countDraw++; str = '무승부!'; break;
+                case -1: countLose++; str = '플레이어 패배!'; break;
+            }
+
+            let winRate = (countWin / (totalCount-countDraw) * 100);
+
+            if(isNaN(winRate)){
+                winRate = 0.00;
+            }
+
+                //../image/가위바위보1.png
+            document.getElementById('h3').innerHTML=`가위바위보 게임 시작!<br><br>플레이어: ${translation(user)}<img src="${iconT(user)}" alt="">, 컴퓨터: ${translation(comp)}<img src="${iconT(comp)}" alt=""><br>${str} <br><br>
+            --현재 전적--<br>승: ${countWin}, 무: ${countDraw}, 패: ${countLose}<br>승률: ${winRate.toFixed(2)}`  
+
+        }
+
+        //컴퓨터의 가위바위보 무작위 도출 (return 1,2,3)
+        function com(){
+            return Math.floor(Math.random()*3)+1;
+        }
+
+        //파라미터로 1~3 랜덤의 두 숫자를 받으면 승부를 내서 결과 리턴 (return 승:1,무:0,패:-1)
+        function match(user,comp){
+            if(user==comp){ 
+                return 0 
+            }else{
+                if(user==1){
+                    switch(comp){
+                        case 2: return -1; break;
+                        case 3: return 1; break;
+                    }
+                }else if(user==2){
+                    switch(comp){
+                        case 3: return -1; break;
+                        case 1: return 1; break;
+                    }
+                }else if(user==3){
+                    switch(comp){
+                        case 1: return -1; break;
+                        case 2: return 1; break;
+                    }
+                }
+            }
+        }
+
+        //숫자 1,2,3을 가위,바위,보로 변환 (return '가위','바위','보')
+        function translation(num){
+            let str="";
+            switch(num){
+                case 1: str = '가위'; break;
+                case 2: str = '바위'; break; 
+                case 3: str = '보'; break;
+            }
+            return str;
+        }
+
+        //전적 초기화
+        function resetRate(){
+            countDraw = 0;
+            countWin = 0;
+            countLose = 0;
+            totalCount = 0;
+            document.getElementById('h3').innerHTML=`가위바위보 게임 시작!`
+        }
+
+        function iconT(num){
+            switch(num){
+                case 1: return '../image/가위바위보1.png';
+                case 2: return '../image/가위바위보2.png';
+                case 3: return '../image/가위바위보3.png';
+            }
+        }
+
+    </script>
+</body>
+</html>

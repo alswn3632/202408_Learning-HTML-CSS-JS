@@ -44,10 +44,10 @@
                     else if(player==3){com==1? countLose++ : countWin++}
                 }
 
-                console.log(`player: ${conversion(player)} com: ${conversion(com)}`)
+                console.log(`player: ${conversion(player)} com: ${conversion(com)}`);
             }
 
-            console.log(`승: ${countWin} 패: ${countLose} 무: ${countDraw}`)
+            console.log(`승: ${countWin} 패: ${countLose} 무: ${countDraw}`);
             document.getElementById('result').innerText = `${(countWin/(10-countDraw)*100).toFixed(2)}`; 
 
             

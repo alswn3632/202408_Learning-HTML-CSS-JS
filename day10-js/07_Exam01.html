@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    input 태그에 파일명.확장자 형태로 입력을 하여 전송 버튼을 클릭하면
+    이미지 파일인지 아닌지 검사
+    이미지 파일이면 '정상 파일입니다.' (green)
+    이미지 파일이 아니면 '이미지 파일만 가능합니다.' (red)
+    이미지파일 jpg(JPG), jpeg, png, gif 대소문자 가능
+    -->
+        파일명 : <input type="text" id="fileName">
+        <button type="button" id="btn">확인</button>
+        <h3 id="result"></h3>
+
+    <script>
+        function checkImg(str){
+            const extensions = ['jpg','jpeg','png','gif']; 
+            return extensions.includes(str);
+        }
+        
+        /*
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let fileName = document.getElementById('fileName').value;
+            let fileExe = (fileName.substring(fileName.lastIndexOf(".")+1)).toLowerCase();
+            const result = document.getElementById('result');
+            if(checkImg(fileExe)){
+                result.innerHTML = `<span style="color: green;">정상 파일입니다.</span>`
+            }else{
+                result.innerHTML = `<span style="color: red;">이미지 파일만 가능합니다.</span>`
+            }
+        })
+        */
+
+        document.getElementById('btn').addEventListener('click',imageValid2);
+
+        function imageValid2(){
+            //match **정규표현식으로 (day8.06) 나열한 값 중 값이 있는지 확인
+            
+            let fileName = document.getElementById('fileName').value;
+            let fileExe = (fileName.substring(fileName.lastIndexOf(".")+1))
+            const result = document.getElementById('result');
+
+            if(fileName.substring(fileName.lastIndexOf(".")+1).match(/jpg|png|gif|jpeg/i)){
+                result.innerHTML = `<span style="color: green;">정상 파일입니다.</span>`
+            }else{
+                result.innerHTML = `<span style="color: red;">이미지 파일만 가능합니다.</span>`
+            }
+        }
+
+    </script>
+</body>
+</html>
