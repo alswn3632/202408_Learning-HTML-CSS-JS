@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face{
+        font-family: nanum-square-round;
+        src: url(../font/nanum-square-round/NanumSquareRoundR.ttf);
+        }  
+
+        body{
+            font-family: nanum-square-round;
+        }
+
+        .pbox{
+            width: 1280px;
+            margin: 0 auto;
+            margin-top: 100px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pbox>.box{
+            width: 100%;
+            background-color: rgb(255, 236, 241);
+
+            margin-bottom: 30px;
+        }
+
+        .pbox>.box1{
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pbox>.box1>:first-child{
+            font-weight: bold;
+            font-size: 40px;
+        }
+
+        .pbox>.box1>:nth-child(2){
+            font-weight: bold;
+            font-size: 60px;
+        }
+        
+        .pbox>.box2{
+            height: 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pbox>.box2>button{
+            width: 300px;
+            height: 80px;
+            background-color: rgb(255, 179, 199);
+            border: none;
+
+            font-size: 30px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+        
+        .pbox>.box3{
+            height: 100px;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pbox>.box3>.hbox{
+            width: 100px;
+            height: 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .pbox>.box3>.hbox>svg{
+            color: rgb(221, 43, 75);
+        }
+        
+        .pbox>.box4{
+            height: 200px;
+            margin-bottom: 0;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pbox>.box4>.ubox{
+            width: 400px;
+            background-color: rgb(255, 211, 223);
+        }
+
+        .pbox>.box4>.ubox1{
+            text-align: center;
+            align-items: center;
+        }
+
+        .pbox>.box4>.ubox1>p{
+            display: inline-block;
+            font-size: 60px;
+            font-weight: bold; 
+
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+
+            line-height: 80px;
+        }
+
+        .pbox>.box4>.ubox2{
+            text-align: center;
+            align-items: center;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pbox>.box4>.ubox2>p{
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .pbox>.box4>.ubox2>input{
+            width: 150px;
+            height: 120px;
+
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.525);
+
+            font-family: nanum-square-round;
+            font-size: 60px;
+            font-weight: bold;
+
+            text-align: center;
+
+        }
+
+        .pbox>.box4>.ubox3{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="pbox">
+        <div class="box box1">
+            <span>Let's Start</span><span>UP&DOWN Game!!</span>
+        </div>
+        <div class="box box2">
+            <button>게임시작!</button>
+        </div>
+        <div class="box box3">
+            <div class="hbox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+            <div class="hbox"></div>
+        </div>
+        <div class="box box4">
+            <div class="ubox ubox1">
+                <p>UP!!</p>
+            </div>
+            <div class="ubox ubox2">
+                <p>플레이어</p>
+                <input type="text">
+            </div>
+            <div class="ubox ubox3">
+                <ul class="listL">
+                    <li>123456</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class="listR">
+                    <li>123456</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

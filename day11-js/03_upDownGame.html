@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        <button id="random">랜덤 숫자 생성 버튼</button>
+        <button id="new">다시 시도</button>
+    </h1>
+
+    <h1 id="printMsg"></h1>
+
+    <h1>
+        <input type="number" min="1" max="99" id="myNum">
+        <button id="compareNum">정답</button>
+    </h1>
+
+    <h3 id="result"></h3>
+
+    <script>
+        let totalTry = 0;
+        let randomNum = 0;
+
+        document.getElementById('random').addEventListener('click', ()=>{
+            randomNum = Math.floor(Math.random()*99)+1;
+            document.getElementById('printMsg').innerText = `컴퓨터가 랜덤 수(1-99)를 생성하였습니다.`
+            console.log(randomNum);
+        })
+        
+        document.getElementById('new').addEventListener('click', () =>{
+            location.reload();
+        })
+        
+        document.getElementById('compareNum').addEventListener('click', () =>{
+            totalTry++;
+
+            let myNum = document.getElementById('myNum').value;
+            let str = "";
+            if(randomNum==0){
+                str = '랜덤 숫자가 생성되지 않았습니다. 버튼을 눌러서 게임을 시작해주세요!';
+                totalTry = 0;
+            }else if(myNum>randomNum){
+                str = `시도횟수 ${totalTry}, DOWN!!`;
+            }else if(myNum<randomNum){
+                str = `시도횟수 ${totalTry}, UP!!`;
+            }else if(myNum=randomNum){
+                str = `시도횟수 ${totalTry}, 정답!!`;
+                //reset
+                totalTry = 0;
+                randomNum = 0;
+                document.getElementById('printMsg').innerText = "";
+            }
+
+            if(randomNum!=0){
+                document.getElementById('result').innerText = str;
+            }else if(randomNum==0){
+                document.getElementById('result').innerText = str;
+            }
+        })
+
+        document.getElementById('myNum').addEventListener('click', ()=>{
+            document.getElementById('myNum').value = "";
+        })
+        
+
+
+
+    </script>
+</body>
+</html>

@@ -93,9 +93,7 @@
         </div>
     </div>
     <script>
-        //<!-- 새로고침 버튼 기능 reload() -->
-        //location.reload();
-
+        
         let countDraw = 0;
         let countWin = 0;
         let countLose = 0;
@@ -122,9 +120,9 @@
                 winRate = 0.00;
             }
 
-                //../image/가위바위보1.png
-            document.getElementById('h3').innerHTML=`가위바위보 게임 시작!<br><br>플레이어: ${translation(user)}<img src="${iconT(user)}" alt="">, 컴퓨터: ${translation(comp)}<img src="${iconT(comp)}" alt=""><br>${str} <br><br>
-            --현재 전적--<br>승: ${countWin}, 무: ${countDraw}, 패: ${countLose}<br>승률: ${winRate.toFixed(2)}`  
+            document.getElementById('h3').innerHTML=`가위바위보 게임 시작!<br><br>플레이어: ${translation(user)}
+            <img src="../image/가위바위보${user}.png" alt="">, 컴퓨터: ${translation(comp)}<img src="../image/가위바위보${comp}.png" alt="">
+            <br>${str} <br><br>--현재 전적--<br>승: ${countWin}, 무: ${countDraw}, 패: ${countLose}<br>승률: ${winRate.toFixed(2)}`  
 
         }
 
@@ -159,6 +157,7 @@
 
         //숫자 1,2,3을 가위,바위,보로 변환 (return '가위','바위','보')
         function translation(num){
+            /*
             let str="";
             switch(num){
                 case 1: str = '가위'; break;
@@ -166,6 +165,11 @@
                 case 3: str = '보'; break;
             }
             return str;
+            */
+
+            const state = ['가위','바위','보'];
+            return state[num-1]
+        
         }
 
         //전적 초기화
@@ -175,14 +179,6 @@
             countLose = 0;
             totalCount = 0;
             document.getElementById('h3').innerHTML=`가위바위보 게임 시작!`
-        }
-
-        function iconT(num){
-            switch(num){
-                case 1: return '../image/가위바위보1.png';
-                case 2: return '../image/가위바위보2.png';
-                case 3: return '../image/가위바위보3.png';
-            }
         }
 
     </script>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        set을 이용한 로또 생성
+    -->
+
+    <h1>1~45까지 중복되지 않게 숫자 6개를 랜덤으로 추출 => 출력
+        set 객체를 이용하여 생성 </h1>
+    
+    <button type="button" id="btn1">랜덤번호 6자리 생성(출력)</button>
+    <h1 id="myNum"></h1>
+    <button type="button" id="btn2">당첨번호 7자리 생성(출력)</button>
+    <h1 id="ranNum"></h1>
+    <button type="button" id="btn3">결과확인</button>
+    <h1 id="result"></h1>
+
+    <script>
+        const user = new Set([]);
+        const comp = new Set([]);
+        let vonus = 0;
+
+        function setRotto(setName,num){
+            setName.clear();
+            for(let i=1; setName.size<num; i++){
+                let rnum = Math.floor(Math.random()*8)+1
+                setName.add(rnum);
+                if(setName.size==7){
+                    vonus = rnum;
+                }
+            }
+        }
+
+        document.getElementById('btn1').addEventListener('click', ()=>{
+            let str = ""
+            setRotto(user,6);
+            console.log(user)
+            
+            user.values().forEach(function(v){
+                str += `${v} `
+            })
+            
+            document.getElementById('myNum').innerText = str;
+        })
+        
+        document.getElementById('btn2').addEventListener('click', ()=>{
+            let str = ""
+            setRotto(comp,7);
+            console.log(comp)
+            console.log(`보너스${vonus}`)
+            
+            comp.values().forEach(function(v){
+                str += `${v} `
+            })
+
+            document.getElementById('ranNum').innerText = str;
+        })
+
+        document.getElementById('btn3').addEventListener('click', ()=>{
+            let count = 0;
+            let rank = 0;
+            let isvonus = false;
+
+            user.values().forEach(function(v){
+                if(comp.has(v)){
+                    count++;
+                    console.log(v);
+                    if(v==vonus){
+                        isvonus = true;
+                        count--;
+                    }
+                }
+            })
+
+            switch(count){
+                case 6: rank=1; break;
+                case 5: if(isvonus){rank=2}else{rank=3} break;
+                case 4: rank=4; break;
+                case 3: rank=5; break;
+            }
+
+            if(rank!=0){
+                document.getElementById('result').innerText = `${rank}등`
+            }else if(rank=0){
+                document.getElementById('result').innerText = `꽝`
+            }
+            
+        })
+    </script>
+</body>
+</html>

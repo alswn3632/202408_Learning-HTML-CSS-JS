@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 300px;
+        }
+
+        form #warning{
+            color: rgb(199, 0, 0);
+            font-size: x-small;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        input 2개 생성 => 과목, 점수 입력
+        map에 추가
+        
+        출력 => map을 출력 ul=>li 형태로 출력
+        결과 => 합계, 평균, 합격여부 (60점 이상이면 합격) => h3
+    -->
+
+    <form action="">
+        <fieldset>
+            <legend>성적 입력</legend>
+            과목: <input type="text" id="sub"> <br>
+            점수: <input type="text" id="num"> <br>
+            <span id="warning"></span> <br>
+            <button type="button" id="btn1">추가</button>
+            <button type="button" id="btn2">출력</button>
+            <button type="button" id="btn3">결과</button>
+            <button type="button" id="btn4">리셋</button>
+        </fieldset>
+    </form>
+
+    <ul id="print"></ul>
+    <h3 id="result"></h3>
+
+    <script>
+        const myMap = new Map();
+        document.getElementById('btn1').addEventListener('click', ()=>{
+            let sub = document.getElementById('sub').value;
+            let num = Number(document.getElementById('num').value);
+
+            if(num>100 || num<0){
+                document.getElementById('warning').innerText = '--0-100 사이 숫자만 가능(미등록)--'
+            }else{
+                myMap.set(sub,num);
+                document.getElementById('warning').innerText = '';
+            }
+
+            document.getElementById('sub').value = "";
+            document.getElementById('num').value = "";
+            document.getElementById('sub').focus();
+        })
+
+        document.getElementById('btn2').addEventListener('click', ()=>{
+            const print = document.getElementById('print');
+            print.innerHTML = ""
+            myMap.forEach(function(v,k){
+                print.innerHTML += `<li>${k}:${v}</li>`
+            })
+        })
+
+        document.getElementById('btn3').addEventListener('click', ()=>{
+            let sum = 0;
+            
+            myMap.forEach(function(v){
+                sum += v
+            })
+            
+            let avg = (sum/myMap.size);
+            let pass = (avg>=60)? 'pass' : 'fail'
+
+            document.getElementById('result').innerText=`합계: ${sum}, 평균: ${avg.toFixed(2)}, ${pass}`
+        })
+
+        document.getElementById('btn4').addEventListener('click', ()=>{
+            location.reload();
+        })
+
+    </script>
+</body>
+</html>

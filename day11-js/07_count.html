@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        button 2개 + / -
+        + => 값이 1씩 증가
+        - => 값이 1씩 감소 (값이 0이되면 감소X)
+    -->
+    <h3 id="number">0</h1>
+    <button type="button" id="incre" onclick="acount(1)">+</button>
+    <button type="button" id="decre" onclick="acount(-1)">-</button>
+
+    <script>
+        function acount(a){
+            let num = document.getElementById('number').innerText;
+
+            if(a==1){
+                num++;
+            }else if(a==-1){
+                num--;
+                if(num<0){num=0;}
+            }
+
+            document.getElementById('number').innerText = num;
+        }
+    </script>
+</body>
+</html>
