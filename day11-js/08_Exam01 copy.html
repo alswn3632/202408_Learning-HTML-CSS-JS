@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 
+        set을 이용한 로또 생성
+
+        set/map clear()
+        array splice(index,count): index부터 count 개수 만큼 제거
+        set : 중복 제거 용 자료형 => 배열로 옮김 
+
+        완성된 set을 배열로 이동
+    -->
+
+    <h1>
+        1~45까지 중복되지 않게 숫자 6개를 랜덤으로 추출 => 출력
+        set 객체를 이용하여 생성 
+    </h1>
+
+    <button type="button" id="makeRandom">랜덤번호 6자리 생성(출력)</button>
+    <h1 id="printNum">로또 번호 출력</h1>
+    <button type="button" id="makeRandom2">당첨번호 7자리 생성(출력)</button>
+    <h1 id="printNum2">당첨 번호 출력</h1>
+
+    <button type="button" id="ranking">결과 확인 버튼</button>
+    <h1 id="printResult">당첨 여부 출력</h1>
+
+    <script>
+        const lottoArr = []; // 6 자리 로또 번호
+        const rNumArr = []; // 당첨번호
+
+        const lottoSet = new Set();
+        const rNumSet = new Set();
+
+        let bonus = 0;
+
+        document.getElementById('makeRandom').addEventListener('click', ()=>{
+            lottoSet.clear();
+            lottoArr.splice(0,6);
+
+            randomNum(lottoSet,lottoArr,6);
+            console.log(lottoSet);
+            console.log(lottoArr);
+
+            document.getElementById('printNum').innerText = lottoArr;
+            // set은 [object Set]라고 출력됨. 사용할 수 없음.
+
+        });
+
+        document.getElementById('makeRandom2').addEventListener('click', ()=>{
+            rNumSet.clear();
+            rNumArr.splice(0,6); // 배열은 clear를 사용할 수 없음
+
+            randomNum(rNumSet,rNumArr,7);
+            console.log(rNumSet);
+            console.log(rNumArr);
+            
+            bonus = rNumArr.pop(); // 배열의 마지막 값을 리턴 + 제거
+            console.log(bonus);
+            console.log(rNumArr);
+
+            document.getElementById('printNum2').innerText = rNumArr + "[" + bonus + "]"
+        });
+
+        document.getElementById('ranking').addEventListener('click', ranking);
+
+        function ranking(){
+            let cnt = 0;
+
+            lottoArr.forEach(function(e){
+                rNumArr.forEach(function(e1){
+                    if(e == e1){
+                        cnt++;
+                    }
+                })
+            })
+
+            let str = '';
+            switch(cnt){
+                case 6: str = '1등'; break;
+                case 5: 
+                    //includes() : 배열에 해당 값이 있는지 없는지 확인 t/f 리턴
+                    lottoArr.includes(bonus)? str = '2등' : str = '3등';
+                    break;
+                case 4: str = '4등'; break;
+                case 3: str = '5등'; break;
+                default: str = '꽝'; break;
+            }
+
+            document.getElementById('printResult').innerText = str;
+        }
+
+        // randomNumber 생성
+        function randomNum(lottoSet, arr, num){
+            // num: 생성될 번호의 개수
+            while(lottoSet.size < num){
+                lottoSet.add(Math.floor(Math.random()*45)+1);
+            }
+
+            // set이 완성된 후 배열 채우기
+            // for(let number of lottoSet){
+            //     arr.push(number);
+            // }
+
+            lottoSet.forEach((e)=>{
+                arr.push(e);
+            })
+        }
+    </script>
+</body>
+</html>

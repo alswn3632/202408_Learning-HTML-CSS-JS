@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>내가 좋아하는 가수</h1>
+    <form action="">
+        이름: <input type="text" id="name"><br>
+        나이: <input type="text" id="age"><br>
+        주소: <input type="text" id="address"><br>
+        playList : <br>
+        <input type="text" id="list1"><br>
+        <input type="text" id="list2"><br>
+        <input type="text" id="list3"><br>
+        <button type="button" id="add">등록</button>
+    </form>
+    <script>
+        const people = [];
+        const musician = {
+            name:'Post Malone',
+            age: 29,
+            address: 'America',
+            playList:{
+                list1: 'circle',
+                list2: 'goodbye',
+                list3: 'better now',    
+            }
+        }
+        
+        people.push(musician);
+        console.log(people);
+        
+        // people에 객체를 3개 등록
+        document.getElementById('add').addEventListener('click', ()=>{
+            const musician2 = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                address: document.getElementById('address').value,
+                playList:{
+                    list1: document.getElementById('list1').value,
+                    list2: document.getElementById('list2').value,
+                    list3: document.getElementById('list3').value,    
+                }
+            }
+            
+            people.push(musician2);
+            console.log(people);
+            
+            //출력
+            people.forEach(function(e){
+                console.log("--가수--");
+                for(let keyName in e){
+                    if(keyName == 'playList'){
+                        //다시 객체 안으로
+                        console.log("--list--")
+                        for(let key in e[keyName]){
+                            console.log(e[keyName][key])
+                            // for in 을 이용할때는 객체의 [키네임]을 이용해 출력함
+                        }
+                    }else{
+                        console.log(keyName + " : " + e[keyName]);
+                    }
+                }
+
+            })
+        })
+        
+        </script>
+</body>
+</html>

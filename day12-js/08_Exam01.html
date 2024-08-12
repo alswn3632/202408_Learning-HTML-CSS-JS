@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- 구구단 문제 -->
+    <h1>
+        <button type="button" id="startBtn" onclick="setExam()">문제출제</button>
+        <!-- 여기서 정답을 가지고 있어야함 -->
+    </h1>
+    <ol id="q"></ol>
+    <h1>
+        <button type="button" id="compareBtn" onclick="compare()">정답확인</button>
+    </h1>
+    <h3 id="printRatio"></h3>
+
+    <script>
+        //input.style.backgroundColor = 'green'
+        //style을 객체의 속성으로 줄 때 background-color >> backgroundColor 처럼 camelCase로 변경하여 속성을 부여함
+        const ol = document.getElementById('q');
+        const ansArr = [];
+
+        function setExam(){
+            ol.innerHTML = ``;
+            ansArr.splice(0,10);
+            // 객체를 이용한다면,
+            // const ansObj[`ans${i}`] = value
+            for(let i=0; i<10; i++){
+                let num1 = Math.floor(Math.random()*9)+1;
+                let num2 = Math.floor(Math.random()*9)+1;
+                ansArr.push(num1*num2);
+                str = `${num1} X ${num2} = <input type="text" id="user${i}" autocomplete="off">`;
+                ol.innerHTML += `<li>${str}</li>`;
+            }
+
+            console.log(ansArr);
+        }
+
+        function compare(){
+            let cnt = 0;
+
+            for(let i=0; i<10; i++){
+                if(ansArr[i] == document.getElementById(`user${i}`).value){
+                    document.getElementById(`user${i}`).value += ' ⭕정답!';
+                    document.getElementById(`user${i}`).style.backgroundColor = 'rgba(74, 243, 74, 0.5)';
+                    cnt++;
+                }else{
+                    document.getElementById(`user${i}`).value += ' ❌오답!';
+                    document.getElementById(`user${i}`).style.backgroundColor = 'rgba(255, 0, 0, 0.5)';
+                }
+            }
+
+            document.getElementById('printRatio').innerText = `정답 ${cnt}개, 정답률 ${cnt/10*100}%`;
+        }
+    </script>
+</body>
+</html>

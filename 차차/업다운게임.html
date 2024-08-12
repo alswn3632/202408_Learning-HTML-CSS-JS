@@ -26,7 +26,7 @@
         .pbox>.box{
             width: 100%;
             background-color: rgb(255, 236, 241);
-
+            border-radius: 5px;
             margin-bottom: 30px;
         }
 
@@ -44,7 +44,7 @@
         }
 
         .pbox>.box1>:nth-child(2){
-            font-weight: bold;
+            font-weight: 900;
             font-size: 60px;
         }
         
@@ -61,18 +61,32 @@
             height: 80px;
             background-color: rgb(255, 179, 199);
             border: none;
-
+            border-radius: 5px;
             font-size: 30px;
             font-weight: bold;
 
             cursor: pointer;
+        }
+
+        .pbox>.box2>.gameStartText{
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+
         }
         
         .pbox>.box3{
             height: 100px;
 
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        
+        .pbox>.box3>span{     
+            font-size: 30px;
+            font-weight: bold;    
+
         }
 
         .pbox>.box3>.hbox{
@@ -85,8 +99,12 @@
             
         }
 
-        .pbox>.box3>.hbox>svg{
-            color: rgb(221, 43, 75);
+        .pbox>.box3>.hbox>.biGray{
+            color: rgba(128, 128, 128, 0.4);
+        }
+
+        .pbox>.box3>.hbox>.biRed{
+            color: rgb(235, 48, 76);
         }
         
         .pbox>.box4{
@@ -95,11 +113,14 @@
 
             display: flex;
             justify-content: space-between;
+
+            background-color: rgba(255, 255, 255, 0);
         }
 
         .pbox>.box4>.ubox{
             width: 400px;
             background-color: rgb(255, 211, 223);
+            border-radius: 5px;
         }
 
         .pbox>.box4>.ubox1{
@@ -111,9 +132,6 @@
             display: inline-block;
             font-size: 60px;
             font-weight: bold; 
-
-            border-top: 2px solid black;
-            border-bottom: 2px solid black;
 
             line-height: 80px;
         }
@@ -152,6 +170,35 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
+
+        }
+
+        .pbox>.box4>.ubox3>.left{
+            width: 200px;
+            height: 30px;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+        }
+        
+        .pbox>.box4>.ubox3>.right{
+            width: 200px;
+            height: 30px;
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+        }
+
+        .pbox>.box4>.ubox3>.lrbox>span{
+            display: block;
+            padding: 5px;
+            text-align: start;
+            font-size: large;
+            font-weight: bold;
         }
 
     </style>
@@ -161,50 +208,180 @@
         <div class="box box1">
             <span>Let's Start</span><span>UP&DOWN Game!!</span>
         </div>
-        <div class="box box2">
-            <button>게임시작!</button>
+        <div class="box box2" id="gameStart">
+            <button id="play">🕹️ 게임시작!</button>
         </div>
-        <div class="box box3">
-            <div class="hbox">
-                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+        <div class="box box3" id="box3">
+            <div class="hbox" id="hbox0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
                     <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
                 </svg>
             </div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
-            <div class="hbox"></div>
+            <div class="hbox" id="hbox1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox7">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
+            <div class="hbox" id="hbox9">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biGray" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/>
+                </svg>
+            </div>
         </div>
         <div class="box box4">
             <div class="ubox ubox1">
-                <p>UP!!</p>
+                <p id="printMsg"></p>
             </div>
             <div class="ubox ubox2">
-                <p>플레이어</p>
-                <input type="text">
+                <p>🙂 정답을 입력해주세요!</p>
+                <input type="text" onkeyup="enterkey()" id="myNum" autocomplete="off">
             </div>
             <div class="ubox ubox3">
-                <ul class="listL">
-                    <li>123456</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <ul class="listR">
-                    <li>123456</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <div class="lrbox left">
+                    <span id="try1">🚩</span>
+                    <span id="try2">🚩</span>
+                    <span id="try3">🚩</span>
+                    <span id="try4">🚩</span>
+                    <span id="try5">🚩</span>
+                </div>
+                <div class="lrbox right">
+                    <span id="try6">🚩</span>
+                    <span id="try7">🚩</span>
+                    <span id="try8">🚩</span>
+                    <span id="try9">🚩</span>
+                    <span id="try10">🚩</span>    
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+
+        let randomNum = 0;
+        let myNum = 0;
+
+        let life = 10;
+        let myTry = 0;
+
+        // 게임시작 버튼 => 랜덤 숫자 생성 life 표시
+        document.getElementById('play').addEventListener('click', ()=>{
+            randomNum = Math.floor(Math.random()*100)+1;
+            document.getElementById('gameStart').innerHTML = `<div class="gameStartText">😊컴퓨터가 랜덤 수(1-100)를 생성하였습니다!<br>❤️기회는 10번! 아래 박스에 숫자를 입력해 랜덤 수를 맞춰주세요!</div>`
+            console.log(randomNum);
+
+            for(let i=0; i<10; i++){
+                document.getElementById(`hbox${i}`).innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart-fill biRed" viewBox="0 0 16 16">
+                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"/></svg>`
+            }
+        })
+
+
+        // 입력창
+        function enterkey() {
+
+	        if (window.event.keyCode == 13) {
+    	        // 엔터키가 눌렸을 때
+
+                myNum = Number(document.getElementById('myNum').value);
+                console.log(`내 번호: ${myNum}`);
+
+                if(myNum>=1 && myNum<=100){                    
+                    let str = '';
+
+                    if(randomNum==0){
+                        alert('❌게임 시작 버튼을 먼저 클릭해주세요!!❌');
+                        document.getElementById('myNum').value = '';
+                    } else if(myNum>randomNum){                       
+                        myTry++;
+                        str = '❌DOWN!!';
+                        
+                        if(myTry<10){
+                            document.getElementById(`hbox${life-myTry}`).innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart biGray" viewBox="0 0 16 16">
+                            <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/></svg>`    
+                        }else if(myTry==10){
+                            document.getElementById('box3').innerHTML = `<span>GAME OVER!! 정답은 ${randomNum}!!</span>`
+                            document.getElementById('gameStart').innerHTML = `<button id="newGame">다시시작!</button>`
+                            document.getElementById('newGame').addEventListener('click', ()=>{
+                                window.location.reload();
+                            })
+                        }
+                            
+                        document.getElementById(`try${myTry}`).innerText += ` ${myNum}, ${str.slice(1)}`;
+                        document.getElementById('myNum').value = '';                            
+                            
+                    }else if(myNum<randomNum){
+                        myTry++;
+                        str = '❌UP!!';
+                            
+                        if(myTry<10){
+                            document.getElementById(`hbox${life-myTry}`).innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-suit-heart biGray" viewBox="0 0 16 16">
+                            <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/></svg>`    
+                        }else if(myTry==10){
+                            document.getElementById('box3').innerHTML = `<span>GAME OVER!! 정답은 ${randomNum}!!</span>`
+                            document.getElementById('gameStart').innerHTML = `<button id="newGame">다시시작!</button>`
+                            document.getElementById('newGame').addEventListener('click', ()=>{
+                            window.location.reload();
+                            })
+                        }
+                    
+                        document.getElementById(`try${myTry}`).innerText += ` ${myNum}, ${str.slice(1)}`;
+                        document.getElementById('myNum').value = '';                   
+                    
+                    }else if(myNum=randomNum){
+                        str = '⭕정답!';
+                        
+                        //reset
+                        document.getElementById('gameStart').innerHTML = `<button id="newGame">🕹️ 다시시작!</button>`
+                        document.getElementById('newGame').addEventListener('click', ()=>{
+                            window.location.reload();
+                        })
+                    }
+                    
+                    document.getElementById('printMsg').innerText = str;
+
+                }else{
+                    alert('❌잘못된 숫자를 입력했습니다!❌');
+                }
+                
+            }
+        }
+        
+            
+    </script>
 </body>
 </html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 생성자함수 : 클래스의 함수화
+        // class, 생성자함수, 객체
+        // 일반 함수와 생성자 함수는 별반 차이가 없음
+        // 1. 생성자 함수는 호출할 때 반드시 new를 통해서 실행
+        // 2. 반드시 함수 첫 글자를 대문자로 시작해야 한다.
+
+        class PersonClass{
+            constructor(first, last, age, addr){
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.addr = addr;
+            }
+
+            get personInfo(){
+                return `${this.firstName}, ${this.lastName} (${this.age}) : ${this.addr}`;
+            }
+        }
+        //get은 호출시 ()가 없음
+        const my = new PersonClass('kim','minji',20,'seoul');
+        console.log(my);
+        console.log(my.personInfo); //메서드가 아닌 프로퍼티
+
+        //위의 클래스를 같은 기능을 하는 생성자 함수로 변환
+        function PersonObject(first, last, age, addr){
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.addr = addr;
+
+            this.getPersonInfo = function(){
+                return `${this.firstName}, ${this.lastName} (${this.age}) : ${this.addr}`;
+            }
+        }
+
+        let my2 = new PersonObject('lee','minji',23,'ansan');
+        console.log(my2);
+        console.log(my2.getPersonInfo());
+
+        // 객체로 생성
+        const person = {
+            firstName:'',
+            lastName:'',
+            age:'',
+            addr:'',
+            setInfo:function(first,last,age,addr){
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.addr = addr;    
+            },
+            get personInfo(){
+                return `${this.firstName}, ${this.lastName} (${this.age}) : ${this.addr}`;
+            },
+            set setfirstName(first){
+                this.firstName = first;
+            }
+        }
+
+        person.setInfo('pack','minji',25,'incheon')
+        console.log(person);
+        //get,set은 둘 다 ()가 없음
+        console.log(person.personInfo);
+        person.setfirstName = 'lee'; // set 또한 ()없이 왼쪽과 같이 설정
+        console.log(person.personInfo);
+    </script>
+</body>
+</html>

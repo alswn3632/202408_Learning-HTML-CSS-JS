@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="calculator">
+        <form action="" name="forms">
+            <input type="text" id="output"> <br>
+            <button type="button" value="C" class="clear">C</button>
+            <button type="button" value="/" class="operator">/</button> <br>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" value="*" class="operator">X</button> <br>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" value="+" class="operator">+</button> <br>
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+            <button type="button" value="-" class="operator">-</button> <br>
+            <button type="button" value=".">.</button>
+            <button type="button" value="0">0</button>
+            <button type="button" value="=" class="operator result">=</button>
+           
+        </form>
+    </div>
+
+    <script>
+        let operator = '';
+
+        // 문서 전체의 document의 클릭을 감지할 수 있음
+        document.querySelector('.calculator').addEventListener('click',(e)=>{
+            console.log(e.target); // 내가 선택한 객체 
+            console.log(e.target.value); // 내가 선택한 객체의 value 값
+            // .querySelector('.calculator')를 통해 form 태그로 범위를 제한할 수 있음
+            console.log(typeof e.target.value);
+            // eval 함수 : 문자로 된 자바스크립트 코드를 그대로 실행하는 함수 위험성이 높음 X사용X
+            let val = e.target.value;
+
+            if(val == '+' || val == '-' || val == '*' || val == '/' ){
+                operator = val;
+                document.getElementById('output').value += val;
+            }else if(val == '='){
+                let str = document.getElementById('output').value;
+                console.log(str);
+                document.getElementById('output').value = calc(str);
+            }else if(val == 'C'){
+                document.getElementById('output').value = '';
+            }else{
+                document.getElementById('output').value += val;
+            }
+
+        })
+
+        function calc(str){
+            let opLocation = 0;
+
+            for(let i=0; i<str.length; i++){
+                if(isNaN(str.charAt(i))){
+                    opLocation = i;
+                }
+            }
+
+            let num1 = parseFloat(str.substring(0,opLocation));
+            console.log(num1); 
+            let num2 = parseFloat(str.substring(opLocation+1)); 
+            console.log(num2); 
+
+            let result = 0;
+
+            switch(operator){
+
+                case '+': result = num1+num2; break;
+                case '-': result = num1-num2; break;
+                case '*': result = num1*num2; break;
+                case '/': 
+                    if(num2==0){
+                        result = '오류';
+                    }else{
+                        result = num1/num2; 
+                    }
+                    break;
+            }
+            
+            return result.toFixed(2);
+        }
+    </script>
+</body>
+</html>

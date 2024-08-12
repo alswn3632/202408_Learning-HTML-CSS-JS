@@ -23,7 +23,7 @@
     <script>
         const user = new Set([]);
         const comp = new Set([]);
-        let vonus = 0;
+        let bonus = 0;
 
         function setRotto(setName,num){
             setName.clear();
@@ -31,7 +31,7 @@
                 let rnum = Math.floor(Math.random()*8)+1
                 setName.add(rnum);
                 if(setName.size==7){
-                    vonus = rnum;
+                    bonus = rnum;
                 }
             }
         }
@@ -52,7 +52,7 @@
             let str = ""
             setRotto(comp,7);
             console.log(comp)
-            console.log(`보너스${vonus}`)
+            console.log(`보너스${bonus}`)
             
             comp.values().forEach(function(v){
                 str += `${v} `
@@ -64,14 +64,14 @@
         document.getElementById('btn3').addEventListener('click', ()=>{
             let count = 0;
             let rank = 0;
-            let isvonus = false;
+            let isbonus = false;
 
             user.values().forEach(function(v){
                 if(comp.has(v)){
                     count++;
                     console.log(v);
-                    if(v==vonus){
-                        isvonus = true;
+                    if(v==bonus){
+                        isbonus = true;
                         count--;
                     }
                 }
@@ -79,7 +79,7 @@
 
             switch(count){
                 case 6: rank=1; break;
-                case 5: if(isvonus){rank=2}else{rank=3} break;
+                case 5: if(isbonus){rank=2}else{rank=3} break;
                 case 4: rank=4; break;
                 case 3: rank=5; break;
             }
