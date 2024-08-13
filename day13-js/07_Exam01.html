@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Tint&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face{
+            font-family: nanum-square-round;
+            src: url(../font/nanum-square-round/NanumSquareRoundR.ttf);
+        }  
+
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            font-family: nanum-square-round;
+        }
+
+        header{
+            margin: 20px 0 30px;
+            text-align: center;
+
+            font-family: "Bungee Tint", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: larger;
+        }
+
+        section{
+            width: 900px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        section>.box{    
+            text-align: center;
+        }
+
+        section>.box>ul{
+            text-align: start;
+        }
+    </style>
+</head>
+<body>
+    <!-- https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json -->
+    <header id="header"></header>
+    <section id="section"></section>
+    <script>
+        const header = document.getElementById('header');
+        const section = document.getElementById('section');
+
+        async function asyncFun(){
+            try{
+                const resp = await fetch ('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+                const result = await resp.json();
+                console.log(typeof result);
+                console.log(result);
+                
+                for(let keyName in result){
+                    console.log(keyName);
+                }
+                
+                return result;
+
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        asyncFun().then(result=>{
+
+            header.innerHTML = `<h1>${result["squadName"]}</h1>`;
+            header.innerHTML += `<h3>HomeTown:${result["homeTown"]} // Formed:${result["formed"]}</h3>`
+
+            for(let i=0; i<result["members"].length; i++){
+
+                let str = '';
+                str += `<div class=box box${i}><h3>${result["members"][i]["name"]}</h3>`
+                str += `<p>SecretIdentity : ${result["members"][i]["secretIdentity"]}</p>`
+                str += `<p>Age : ${result["members"][i]["age"]}</p>`
+                str += `<p>Superpowers : </p><ul>`
+                for(let list of result["members"][i]["powers"]){
+                    str += `<li>${list}</li>`
+                }
+                str += `</ul></div>`
+                section.innerHTML += str;
+
+            }
+        })
+    </script>
+</body>
+</html>

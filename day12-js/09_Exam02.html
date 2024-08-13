@@ -4,25 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .calculator{
+            width: 320px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: 2px solid gray;
+
+        }
+
+        .calculator>form{
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+        .calculator>form>input{
+            width: 320px;
+            height: 80px;
+            
+            box-sizing: border-box;
+            text-decoration: none;
+            background-color: rgb(255, 255, 255);
+            text-align: end;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .calculator>form>button{
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            border: none;
+            border: 1px solid rgb(124, 124, 124);
+            font-size: x-large;
+            font-weight: bold;
+            background-color: rgb(227, 227, 227);
+        }
+
+        .calculator>form>.clear{
+            width: 240px;
+
+            background-color: rgb(255, 211, 89);
+        }
+
+        .calculator>form>.result{
+            width: 160px;
+
+            background-color: rgb(255, 211, 89);
+        }
+
+        .calculator>form>.operator{
+            background-color: rgb(188, 207, 255);
+        }
+        
+    </style>
 </head>
 <body>
     <div class="calculator">
         <form action="" name="forms">
             <input type="text" id="output"> <br>
             <button type="button" value="C" class="clear">C</button>
-            <button type="button" value="/" class="operator">/</button> <br>
+            <button type="button" value="/" class="operator">➗</button> <br>
             <button type="button" value="1">1</button>
             <button type="button" value="2">2</button>
             <button type="button" value="3">3</button>
-            <button type="button" value="*" class="operator">X</button> <br>
+            <button type="button" value="*" class="operator">✖️</button> <br>
             <button type="button" value="4">4</button>
             <button type="button" value="5">5</button>
             <button type="button" value="6">6</button>
-            <button type="button" value="+" class="operator">+</button> <br>
+            <button type="button" value="+" class="operator">➕</button> <br>
             <button type="button" value="7">7</button>
             <button type="button" value="8">8</button>
             <button type="button" value="9">9</button>
-            <button type="button" value="-" class="operator">-</button> <br>
+            <button type="button" value="-" class="operator">➖</button> <br>
             <button type="button" value=".">.</button>
             <button type="button" value="0">0</button>
             <button type="button" value="=" class="operator result">=</button>
@@ -48,7 +104,9 @@
             }else if(val == '='){
                 let str = document.getElementById('output').value;
                 console.log(str);
-                document.getElementById('output').value = calc(str);
+                
+                document.getElementById('output').value = calc(str).toFixed(2);
+                
             }else if(val == 'C'){
                 document.getElementById('output').value = '';
             }else{
@@ -61,7 +119,7 @@
             let opLocation = 0;
 
             for(let i=0; i<str.length; i++){
-                if(isNaN(str.charAt(i))){
+                if(str.charAt(i)==operator){
                     opLocation = i;
                 }
             }
@@ -80,14 +138,15 @@
                 case '*': result = num1*num2; break;
                 case '/': 
                     if(num2==0){
-                        result = '오류';
+                        result = 0;
                     }else{
                         result = num1/num2; 
                     }
                     break;
             }
             
-            return result.toFixed(2);
+            return result;
+
         }
     </script>
 </body>

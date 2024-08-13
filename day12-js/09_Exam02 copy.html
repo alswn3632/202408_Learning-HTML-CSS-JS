@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="09_style.css">
+</head>
+<body>
+    <div class="calculator">
+        <form action="" name="forms">
+            <input type="text" id="output">
+            <button type="button" value="C" class="clear">C</button>
+            <button type="button" value="/" class="operator">/</button>
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+            <button type="button" value="*" class="operator">x</button>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" value="+" class="operator">+</button>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" value="-" class="operator">-</button>
+            <button type="button" value=".">.</button>
+            <button type="button" value="0">0</button>
+            <button type="button" value="=" class="operator result">=</button>
+           
+        </form>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        let outputValue = '';
+
+        // 문서 전체의 document의 클릭을 감지할 수 있음
+        document.querySelector('.calculator').addEventListener('click',(e)=>{
+            /*
+            // .querySelector('.calculator')를 통해 form 태그로 범위를 제한할 수 있음
+            console.log(typeof e.target.value);
+            console.log(e.target); // 내가 선택한 **객체 
+            console.log(Number(e.target.value)); // 내가 선택한 객체의 **value 값
+            // eval 함수 : 문자로 된 자바스크립트 코드를 그대로 실행하는 함수 위험성이 높음 X사용X            
+            // NaN => op로 사용
+            */
+
+            let btnVal = e.target.value;
+            output.value += btnVal;
+            if(!isNaN(btnVal)){ // => btnVal이 숫자라면
+                outputValue += btnVal;
+            } else {
+                // 숫자가 아닐 때
+                // + - * / . = c undefined
+                if(btnVal != undefined ){
+                    switch(btnVal){
+                        case "." : 
+                            // 숫자에 붙여서 소수점 역할을 함
+                            outputValue += btnVal;
+                            break;
+                        case "C" : 
+                            // output 창을 지우기
+                            outputValue = '';
+                            output.value = '';
+                            break;
+                        default: 
+                            // 사칙연산 + - * / =
+                            let sub = ''; // 결과를 받을 변수
+                            if(btnVal == '='){
+                                // 연산 결과를 호출 (function 작업)
+                                sub = extractValue(outputValue);
+                                outputValue = sub;
+                            } else {
+                                outputValue += ` ${btnVal} `; // String
+                                // 이후 function 작업으로 피연산자와 연산자로 분리
+                            }
+                            break;
+                    }
+                }
+            }
+            output.value = outputValue; // 화면에 표시
+        })
+
+        function extractValue(strValue){
+            // string 12.5+13.2= 연산자와 피연산자로 나누기
+            let firstNum = strValue.substring(0,strValue.indexOf(" "));
+            let operator = strValue.substr(strValue.indexOf(" ")+1,1); // 시작번지부터 1개
+            let lastNum = strValue.substring(strValue.lastIndexOf(" ")+1); // 마지막 공백부터 끝까지
+
+            // 계산 값 호출
+            return operation(parseFloat(firstNum),operator,parseFloat(lastNum));
+        }
+
+        function operation(f,o,l){
+            let result;
+            switch(o){
+                case "+" : result = f + l; break;
+                case "-" : result = f - l; break;
+                case "*" : result = f * l; break;
+                case "/" : result = f / l; break;
+            }
+            return result.toFixed(2);
+        }
+
+    </script>
+</body>
+</html>
