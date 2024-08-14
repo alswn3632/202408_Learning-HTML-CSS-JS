@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+            height: 500px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        a{
+            font-size: 25px;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Travel</h1>
+    <ul>
+        <li><a id="home" onclick="clickCity(this)">home</a></li>
+        <li><a id="seoul" onclick="clickCity(this)">seoul</a></li>
+        <li><a id="tokyo" onclick="clickCity(this)">tokyo</a></li>
+        <li><a id="paris" onclick="clickCity(this)">paris</a></li>
+    </ul>
+    <img src="../image/비행기.jfif" alt="" id="cityImg">
+
+    <script>
+        function clickCity(e){
+            event.preventDefault();
+            console.log(e); // onclick="clickCity(this)" >> 내 객체를 element로 담아줄 수 있음
+            console.log(e.id);
+
+            const cityImg = document.getElementById('cityImg');
+            cityImg.src = `../image/${e.id}.jpg`;
+        }
+    </script>
+</body>
+</html>
