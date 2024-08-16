@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @font-face{
+            font-family: nanum-barun-pen;
+            src: url(../font/nanum-barun-pen/NanumBarunpenR.ttf);
+        }
+
+        body{
+            font-family: nanum-barun-pen;
+        }
+
+        #wapper{
+            width: 600px;
+            margin: 0 auto;
+            text-align: center;
+
+            font-family: nanum-barun-pen;
+        }
+
+        #wapper>form{
+            background-color: rgb(75, 129, 216);
+            padding: 30px 40px;
+        }
+
+        #wapper>form>input{
+            border: none;
+            outline: none;
+            width: 300px;
+            padding: 10px;
+            font-size: 15px;
+            font-family: nanum-barun-pen;
+        }
+
+        #wapper>form>button{
+            border: none;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 3px 3px 3px rgb(49, 74, 115);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: nanum-barun-pen;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wapper" class="pbox">
+        <h1>✈️여행 준비물 점검 목록✈️</h1>
+        <form>
+            <input type="text" id="item" autofocus="true">
+            <button type="button" id="add" onclick="addItem()">추가</button>
+        </form>
+        <div>
+            <ul id="itemList"></ul>
+        </div>
+    </div>
+    <script>
+        // 데이터가 추가되고 삭제되는 작동이 화면이 꺼지고 켜질 때 사라진다면 저장공간을 사용하지 않는 것 => 화면이 할 일
+        // 실제로 데이터를 저장해서 브라우저가 꺼져도 다시 남아있도록 하는 것 => DB에 저장하고 꺼내오는 것 
+        // 절대로 사라지지 않을 데이터는 화면에 저장할 수도 있다 => F12 - application - storage - localstorage 를 이용해 브라우저 자체에 저장할 수 있다.
+        //     (=>많은 양을 저장하진 못함)
+
+        // 추가하는 목록을 저장, 삭제하는 목록을 제거
+        const itemList = [];
+
+        // 추가
+        function addItem(){
+            let item = document.getElementById('item');
+            if(item.value != ''){
+                itemList.push(item.value);
+                item.value = ''; // input 창 비우기
+                item.focus(); // input 창에 포커스 두기
+                // 화면에 출력
+                showList();
+            }else{
+                alert('아이템 값이 없습니다.')
+                item.focus();
+            }
+        }
+        // 삭제 : 동적으로 생기는 엘리먼트에 이벤트 생성 시 => document에 리스너를 달아서 클릭을 감지 후 처리
+        document.addEventListener('click',(e)=>{
+            console.log(e.target);
+            if(e.target.classList.contains('close')){ // => 삭제버튼을 클릭했다면
+                let i = e.target.id; // 삭제버튼의 id = 그 삭제 버튼이 있는 아이템의 인덱스
+                // i 번지 1개 삭제
+                itemList.splice(i,1);
+            }
+            // 화면에 출력
+            showList();
+        })
+        // 출력
+        function showList(){
+            let list = ''; // 텍스트
+            for(let i=0; i<itemList.length; i++){
+                list += `<li id="list${i}">${itemList[i]}<span class="close" id="${i}">X<span></li>`;
+            }
+            document.getElementById('itemList').innerHTML = list;
+        }
+    </script>
+</body>
+</html>

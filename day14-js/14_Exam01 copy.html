@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @font-face{
+            font-family: nanum-barun-pen;
+            src: url(../font/nanum-barun-pen/NanumBarunpenR.ttf);
+        }  
+
+        body{
+           margin: 0;
+           font-family: nanum-barun-pen;
+           background-image: url(../image/일본감성\ 배경화면.jpg);
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;
+
+           display: flex;
+           align-items: center;
+           justify-content: center;
+        }
+
+        body>.pbox{
+            width: 500px;
+            height: 100vh;
+            margin: 0 auto;
+            backdrop-filter: blur(3px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body>.pbox>h1{
+            margin-top: 40px;
+        }
+
+        .form{
+            width: 500px;
+            height: 80px;
+            background-color: rgb(255, 227, 136);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form>#item{
+            width: 200px;
+            height: 30px;
+
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+            margin-right: 5px;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .form>#add{
+            width: 50px;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+
+            font-weight: bold;
+           
+        }
+
+        .pbox ul{
+            list-style: none;
+            padding: 0;
+        }
+  
+        .pbox ul>li{
+            width: 500px;
+            height: 35px;
+            background-color: rgb(255, 249, 230);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: start;
+        }
+        
+        .pbox ul>li:nth-child(2n){
+            background-color: rgb(255, 244, 207);
+        }
+
+        .pbox ul>li>p{
+            margin-left: 10px;
+        }
+        .pbox ul>li>.del{
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wapper" class="pbox">
+        <h1>✈️여행 준비물 점검 목록✈️</h1>
+        <div class="form">
+            <input type="text" id="item" autofocus="true">
+            <button type="button" id="add">추가</button>
+        </div>
+        <div>
+            <ul id="itemList"></ul>
+        </div>
+    </div>
+
+    <script>
+        const ul = document.getElementById('itemList');
+        const item = document.getElementById('item');
+        const itemList = [];
+
+        function print(del){
+            let num = del.slice(-1);
+            itemList.splice(num,1);
+            printList();
+        }
+
+        document.getElementById('add').addEventListener('click',()=>{
+            if(item.value != ''){
+                itemList.push(item.value);
+            }
+            item.value = '';
+            printList();
+        })
+
+        function printList(){
+            ul.innerHTML = '';
+            for(let i=0; i<itemList.length; i++){
+                let btn = `<button type="button" id="del${i}" class="del" onclick="print(this.id)">X</button>`;
+                ul.innerHTML += `<li id=li${i}><p>${itemList[i]}</p>${btn}</li>`;
+            }
+        }
+        
+    </script>
+</body>
+</html>

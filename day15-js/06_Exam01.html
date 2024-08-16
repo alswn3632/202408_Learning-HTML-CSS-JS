@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pbox{
+            width: 1000px;
+            height: 600px;
+            background-color: paleturquoise;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pbox">
+        <button type="button" id="startBtn">게임시작</button>
+        <h1 id="comMsg"></h1>
+        <div class="inputBox">
+            <span>숫자입력 : </span><input type="text" id="myNum">
+            <button type="button" id="tryBtn">게임 확인</button>
+        </div>
+        <ol id="ol"></ol>
+    </div>
+        
+    <script>
+        const comSet = new Set();
+        const mySet = new Set();
+
+        const comArr = [];
+        const myArr = [];
+
+        const myNum = document.getElementById('myNum');
+        const ol = document.getElementById('ol');
+
+        let ready = false;
+
+        // 컴퓨터 랜덤 숫자 생성
+        document.getElementById('startBtn').addEventListener('click',()=>{
+            comSet.clear();
+            comArr.splice(0,3);
+
+            while(comSet.size<3){
+                comSet.add(Math.floor(Math.random()*9)+1);
+            }
+
+            comSet.forEach((e)=>{
+                comArr.push(e);
+            })
+            document.getElementById('comMsg').innerText = '컴퓨터가 숫자를 생성했습니다.'
+            ready = true;
+            console.log(comArr);
+        })
+
+        // 결과 확인
+        document.getElementById('tryBtn').addEventListener('click',()=>{
+            if(ready){
+                // 입력한 규칙에 맞는 숫자를 배열에 담음
+                myArr.splice(0,myArr.length);
+                for(let a of makeArr(myNum.value)){
+                    myArr.push(a);
+                }
+                console.log(myArr);
+                
+                // 컴퓨터의 숫자와 나의 숫자를 비교하고 결과 출력
+                ol.innerHTML += `<li>${myNum.value} ${printRes(myArr,comArr)}</li>`
+            }else{
+                alert("오류 넘버3 \n 게임시작 버튼을 먼저 눌러주세요.")
+            }
+        })
+
+        // 사용자의 숫자를 검증하고 mySet에 담아 리턴
+        function makeArr(str){
+            mySet.clear();
+
+            if(isNaN(Number(str))){
+                alert("오류 넘버1 \n 숫자가 아닌 값을 입력했습니다.")
+            }else{
+                let arr = str.split('');
+                for(let a of arr){
+                    mySet.add(a);
+                }
+
+                if(mySet.size != 3){
+                    alert("오류 넘버2 \n 입력한 숫자가 3자리 수가 아닙니다.")
+                }else{
+                    myNum.value = '';
+                    return mySet;
+                }
+            }
+
+            myNum.focus();
+            myNum.value = '';
+        }
+
+        // 컴퓨터와 사용자의 숫자를 비교해 결과를 리턴
+        function printRes(myArr,comArr){
+            let strike = 0;
+            let ball = 0;
+            let str = '';
+
+            for(let i=0; i<myArr.length; i++){
+                for(let j=0; j<comArr.length; j++){
+                    if(myArr[i] == comArr[j] ){
+                        if(i==j){
+                            strike++;
+                        }else{
+                            ball++;
+                        }
+                    }
+                }
+            }
+
+            if(strike == 3){
+                str = '정답!!'
+            }else if(strike == 0 && ball == 0){
+                str = '꽝!!'
+            }else{
+                str = `${strike}S, ${ball}B!!`
+            }
+
+            return str;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="makeBtn">element</button>
+    <div id="zone"></div>
+
+    <script>
+        document.getElementById('makeBtn').addEventListener('click',()=>{
+            let newBtn = `<button type="button" id="newBtn">newBtn</button>`
+            document.getElementById('zone').innerHTML = newBtn;
+            document.getElementById('newBtn').addEventListener('click',()=>{
+                document.getElementById('zone').innerHTML += `<h3>newBtn 클릭!</h3>`
+            })
+        });
+
+        // // 현 위치에서 newBtn이 생성되어있는 상태가 아님. 인지 불가
+        // document.getElementById('newBtn').addEventListener('click',()=>{
+        //     console.log("newBtn 클릭!")
+        // }) // => Uncaught 에러발생 
+
+        //문서 전체에 리스너를 장착하여 엘리먼트를 선택한 후 id 검사
+        document.addEventListener('click',(e)=>{
+            if(e.target.id == 'newBtn'){
+                document.getElementById('zone').innerHTML += `<h3>newBtn 클릭!</h3>`
+            }
+        })
+
+    </script>
+</body>
+</html>

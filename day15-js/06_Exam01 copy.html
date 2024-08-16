@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <button type="button" id="startBtn">게임시작</button>
+    <h1 id="comMsg"></h1>
+    숫자입력 : <input type="text" id="myNum">
+    <button type="button" id="tryBtn">게임 확인</button>
+    <ol id="ol"></ol>
+        
+    <script>
+        const comSet = new Set();
+        let comNums = [];
+
+        const comMsg = document.getElementById('comMsg');
+        const ol = document.getElementById('ol');
+
+        // 검증
+        // 숫자는 3자리, 숫자만 가능, 비어있으면 안됨
+        function validMyNum(myNum){
+            if(myNum ==''){ // 공백 검증
+                return false;
+            }else if(myNum.length != 3){ // 3자리 검증
+                return false;
+            }else if(isNaN(myNum)){ // 숫자 검증
+                return false;
+            }else if(new Set(myNum.split('')).size != 3){ // 중복 검증
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        function makeGame(){
+            // 기존 값 초기화
+            comNums = [];
+            comSet.clear();
+            ol.innerText='';
+            while(comSet.size < 3){
+                let rNum = Math.floor(Math.random()*9)+1;
+                comSet.add(rNum);
+            }
+            
+        }
+    </script>
+</body>
+</html>
